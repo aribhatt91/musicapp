@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+         />
+
+    <ScrollView
+        android:id="@+id/aboutScroll"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="?attr/colorPrimary"
+        android:scrollbars="none"
+        android:paddingLeft="@dimen/global_padding"
+        android:paddingRight="@dimen/global_padding">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:paddingLeft="@dimen/list_padding"
+            android:paddingRight="@dimen/list_padding">
+
+            <ImageView
+                android:id="@+id/aboutAppIcon"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:src="@drawable/onix_head_phone" />
+
+            <TextView
+                android:id="@+id/aboutAppName"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/aboutAppIcon"
+                android:gravity="center"
+                android:text="@string/app_name"
+                android:textColor="@android:color/white"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/aboutVersion"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/aboutAppName"
+                android:gravity="center"
+                android:text="@string/about_version"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/aboutDescription"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/aboutVersion"
+                android:layout_marginTop="16dp"
+                android:text="@string/about_description"
+                android:textColor="@color/white"
+                android:textSize="@dimen/list_text_header_size" />
+
+            <TextView
+                android:id="@+id/lastFmHeader"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/aboutDescription"
+                android:layout_marginTop="16dp"
+                android:text="@string/lastfm_header"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/list_text_header_size" />
+
+            <ImageView
+                android:id="@+id/lastFmDetail"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:layout_below="@id/lastFmHeader"
+                android:layout_margin="20dp"
+                android:src="@drawable/last_fm_logo"
+                android:textColor="@color/white"
+                android:contentDescription="@string/lastfm_description"
+                android:textSize="@dimen/list_text_header_size" />
+            <TextView
+                android:id="@+id/UsesYT"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/lastFmDetail"
+                android:layout_marginTop="16dp"
+                android:text="@string/yt_api"
+                android:textColor="@color/white"
+                android:textSize="@dimen/list_text_header_size" />
+            <TextView
+                android:id="@+id/disclaimer"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/UsesYT"
+                android:layout_marginTop="16dp"
+                android:text="@string/disclaimer"
+                android:textColor="@color/white"
+                android:textSize="@dimen/list_text_header_size" />
+
+
+            <TextView
+                android:id="@+id/aboutUsesHeader"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/disclaimer"
+                android:layout_marginTop="16dp"
+                android:text="@string/uses_header"
+                android:textColor="@color/white"
+                android:textSize="@dimen/list_text_header_size" />
+
+            <TextView
+                android:id="@+id/aboutAOSPHeader"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/aboutUsesHeader"
+                android:layout_marginTop="16dp"
+                android:text="@string/uses_aosp_header"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/list_text_header_size" />
+
+            <TextView
+                android:id="@+id/aboutAOSPDetail"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/aboutAOSPHeader"
+                android:text="@string/uses_aosp_detail"
+                android:textColor="@color/white"
+                android:textSize="@dimen/list_text_detail_size" />
+
+            <TextView
+                android:id="@+id/aboutGsonHeader"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/aboutAOSPDetail"
+                android:layout_marginTop="16dp"
+                android:text="@string/uses_gson_header"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/list_text_header_size" />
+
+            <TextView
+                android:id="@+id/aboutGsonDetail"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/aboutGsonHeader"
+                android:text="@string/uses_gson_detail"
+                android:textColor="@color/white"
+                android:textSize="@dimen/list_text_detail_size" />
+
+            <TextView
+                android:id="@+id/aboutPicassoHeader"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/aboutGsonDetail"
+                android:layout_marginTop="16dp"
+                android:text="@string/uses_glide_header"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/list_text_header_size" />
+
+            <TextView
+                android:id="@+id/aboutPicassoDetail"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/aboutPicassoHeader"
+                android:text="@string/uses_glide_detail"
+                android:textColor="@color/white"
+                android:textSize="@dimen/list_text_detail_size" />
+
+            <TextView
+                android:id="@+id/aboutVerticalSeekBarHeader"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/aboutPicassoDetail"
+                android:layout_marginTop="16dp"
+                android:text="@string/uses_vert_slider_header"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/list_text_header_size" />
+
+            <TextView
+                android:id="@+id/aboutVerticalSeekBarDetail"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/aboutVerticalSeekBarHeader"
+                android:text="@string/uses_vert_slider_detail"
+                android:textColor="@color/white"
+                android:textSize="@dimen/list_text_detail_size" />
+            <TextView
+                android:id="@+id/abouttextHeader"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/aboutVerticalSeekBarDetail"
+                android:layout_marginTop="16dp"
+                android:text="@string/text_drawable_header"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/list_text_header_size" />
+
+            <TextView
+                android:id="@+id/abouttextDetail"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/abouttextHeader"
+                android:text="@string/text_drawable_text"
+                android:textColor="@color/white"
+                android:textSize="@dimen/list_text_detail_size" />
+            <TextView
+                android:id="@+id/aboutfabHeader"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/abouttextDetail"
+                android:layout_marginTop="16dp"
+                android:text="@string/fab_header"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/list_text_header_size" />
+
+            <TextView
+                android:id="@+id/aboutfabDetail"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/aboutfabHeader"
+                android:text="@string/fab_text"
+                android:textColor="@color/white"
+                android:textSize="@dimen/list_text_detail_size" />
+            <TextView
+                android:id="@+id/ishani"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/aboutfabDetail"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="5dp"
+                android:text="@string/ishani"
+                android:textSize="@dimen/list_text_header_size"
+                android:textColor="@android:color/white"
+                />
+
+            <TextView
+                android:id="@+id/aboutStackOverflowHeader"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ishani"
+                android:text="@string/uses_stackoverflow"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/list_text_header_size" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_below="@id/aboutStackOverflowHeader"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:padding="30dp"
+                >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="centerInside"
+                    android:layout_gravity="center"
+                    android:src="@drawable/onix_bannerpng"/>
+            </FrameLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
+</LinearLayout>

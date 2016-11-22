@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="?attr/actionBarSize"
+    xmlns:playpauseview="http://schemas.android.com/apk/res-auto"
+    android:clickable="true"
+    android:background="?android:colorForeground"
+    android:orientation="horizontal"
+    android:gravity="bottom"
+    android:layout_gravity="bottom"
+    android:layout_alignParentBottom="true"
+    android:id="@+id/footer">
+    <!-- ListRow Left side Thumbnail image -->
+
+    <ImageView
+        android:id="@+id/footer_thumb"
+        android:contentDescription="@string/app_name"
+        android:layout_width="?attr/actionBarSize"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_gravity="right"
+        android:scaleType="centerCrop"
+        android:src="@drawable/default_album_art_75" />
+
+    <FrameLayout
+        android:id="@+id/playframe"
+        android:layout_width="?attr/actionBarSize"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true">
+        <com.optimus.music.player.onix.Utility.ViewUtils.PlayPauseView
+            android:id="@+id/btn_play"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:clickable="true"
+            android:foreground="?android:selectableItemBackground"
+            playpauseview:isCircleDraw="false"
+            />
+    </FrameLayout>
+
+
+    <!-- Song Name-->
+    <LinearLayout
+        android:id="@+id/textHolder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_toRightOf="@id/footer_thumb"
+        android:layout_toEndOf="@id/footer_thumb"
+        android:layout_toLeftOf="@id/playframe"
+        android:layout_toStartOf="@id/playframe"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/songTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="?android:textColorPrimary"
+            android:textSize="14sp"
+            android:typeface="sans"
+            android:scrollHorizontally="true"
+            android:ellipsize="end"
+            android:maxLines="1"/>
+        <!-- Weather Information-->
+        <TextView
+            android:id="@+id/songArtist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:textColor="?android:textColorSecondary"
+            android:textSize="12sp"
+            android:scrollHorizontally="true"
+            android:ellipsize="end"
+            android:maxLines="1"/>
+
+    </LinearLayout>
+
+
+    <ProgressBar
+        android:id="@+id/songProgress"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:progressDrawable="@drawable/progress_drawable"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_toRightOf="@id/footer_thumb"
+        android:layout_toEndOf="@id/footer_thumb"/>
+</RelativeLayout>

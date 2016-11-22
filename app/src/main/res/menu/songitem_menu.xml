@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="200dp"
+    android:layout_height="wrap_content">
+    <item
+        android:id="@+id/one"
+        android:title="Play Next"
+        />
+
+    <item
+        android:id="@+id/two"
+        android:title="Add to queue"/>
+
+    <item
+        android:id="@+id/three"
+        android:title="Add to playlist"/>
+    <item
+        android:id="@+id/four"
+        android:title="Set as Ringtone"/>
+    <item
+        android:id="@+id/five"
+        android:title="Delete"/>
+
+</menu>

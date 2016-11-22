@@ -1,0 +1,26 @@
+<resources>
+
+    <dimen name="flexible_space_small">180dp</dimen>
+    <dimen name="spacing">10dp</dimen>
+    <dimen name="grid_pmargin">40dp</dimen>
+    <dimen name="list_pmargin">40dp</dimen>
+    <dimen name="list_pmargin_neg">-40dp</dimen>
+    <dimen name="grid_margin">10dp</dimen>
+
+    <dimen name="fab_margin_">56dp</dimen>
+    <dimen name="rlist_margin">20dp</dimen>
+    <dimen name="gallery_grid_margin">36dp</dimen>
+    <dimen name="jb_recycler_margin">20dp</dimen>
+
+    <dimen name="fast_scroll_width">36dp</dimen>
+    <dimen name="recycler_list_left_margin">36dp</dimen>
+    <dimen name="recycler_list_right_margin">18dp</dimen>
+    <dimen name="overlay">80dp</dimen>
+
+
+
+
+
+
+
+</resources>

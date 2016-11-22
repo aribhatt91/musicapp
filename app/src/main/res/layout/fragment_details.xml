@@ -1,0 +1,40 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:recyclerviewfastscroller="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?android:colorBackground"
+    tools:context="com.optimus.music.player.onix.FoldersActivity.DetailsFragment">
+    <View
+        android:id="@+id/bg"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/recycler_bg_view_height"
+        android:background="?attr/colorPrimary"/>
+
+    <xyz.danoz.recyclerviewfastscroller.vertical.VerticalRecyclerViewFastScroller
+        android:id="@+id/fast_scroller"
+        android:layout_width="@dimen/fast_scroll_width"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        recyclerviewfastscroller:rfs_barColor="#722D2D2D"
+
+        />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:elevation="4dp"
+        android:background="?android:colorForeground"
+        android:layout_toLeftOf="@id/fast_scroller"
+        android:layout_toStartOf="@id/fast_scroller"
+        android:scrollbars="none"
+        android:layout_marginLeft="@dimen/recycler_list_left_margin"
+        android:layout_marginStart="@dimen/recycler_list_left_margin"
+        android:layout_marginRight="@dimen/recycler_list_right_margin"
+        android:layout_marginEnd="@dimen/recycler_list_right_margin"
+        />
+
+</RelativeLayout>

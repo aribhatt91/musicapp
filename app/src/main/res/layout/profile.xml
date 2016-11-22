@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<RelativeLayout
+    android:id="@+id/card"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="20dp"
+        android:layout_centerVertical="true">
+        <TextView
+            android:id="@+id/artist_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/header_text_size"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:textColor="?android:textColorPrimary"
+            android:fadingEdge="horizontal"/>
+        <TextView
+            android:id="@+id/artist_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textSize="@dimen/list_text_detail_size"
+            android:singleLine="true"
+            android:textColor="?android:textColorSecondary"/>
+    </LinearLayout>
+
+</RelativeLayout>
+
+
+

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    android:id="@+id/genre_container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/grid_shadow"
+    android:layout_marginLeft="10dp"
+    android:layout_marginTop="10dp"
+    android:clipToPadding="false"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.optimus.music.player.onix.Utility.SquareFrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:background="?android:colorForeground">
+
+
+        <com.optimus.music.player.onix.Utility.HalfSquareImageView
+            android:id="@+id/albumart_three"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom|left"
+            android:background="#eaff00"
+            android:scaleType="centerCrop"
+            android:saveEnabled="true"
+            android:layout_margin="0dp"
+            android:src="@drawable/default_album_art"
+
+            />
+
+
+        <com.optimus.music.player.onix.Utility.HalfSquareImageView
+            android:id="@+id/albumart_two"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#0099ff"
+            android:layout_gravity="top|right"
+            android:scaleType="centerCrop"
+            android:saveEnabled="true"
+            android:src="@drawable/default_album_art"
+            />
+
+        <com.optimus.music.player.onix.Utility.HalfSquareImageView
+            android:id="@+id/albumart_four"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:background="#ff2a7f"
+            android:scaleType="centerCrop"
+            android:saveEnabled="true"
+            android:src="@drawable/default_album_art"
+            />
+        <com.optimus.music.player.onix.Utility.HalfSquareImageView
+            android:id="@+id/albumart_one"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|left"
+            android:background="#80ff00"
+            android:scaleType="fitXY"
+            android:saveEnabled="true"
+            android:layout_margin="0dp"
+            android:src="@drawable/default_album_art"
+            />
+
+
+
+    </com.optimus.music.player.onix.Utility.SquareFrameLayout>
+
+    <include layout="@layout/genre_grid_footer"/>
+
+</LinearLayout>

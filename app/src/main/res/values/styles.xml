@@ -1,0 +1,342 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="AppTheme" parent="AppThemeBaseLight.Earth" />
+
+
+    <style name="AppThemeBase" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="android:windowBackground">@color/metalBg</item>
+        <item name="android:colorBackground">@color/metalBg</item>
+        <item name="android:colorForeground">@color/metalList</item>
+        <item name="colorAccent">#FFFF0059</item>
+        <item name="android:textColorSecondary">@color/darkTextSecondary</item>
+        <item name="android:colorActivatedHighlight">@color/metalYellow</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:textColorPrimary">@color/darkTextPrimary</item>
+        <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
+        <item name="android:textColorPrimaryInverse">@android:color/white</item>
+        <item name="android:textColorSecondaryInverse">#FFFF0059</item>
+        <item name="android:listSelector">@drawable/songlist_selector</item>
+    </style>
+
+    <style name="ActionBar" parent="ThemeOverlay.AppCompat.ActionBar">
+        <item name="android:displayOptions">homeAsUp</item>
+    </style>
+
+    <style name="AppThemeBase.Passion" parent="@style/AppThemeBase">
+        <item name="colorPrimary">@color/passionLight</item>
+        <item name="colorPrimaryDark">@color/passionDark</item>
+        <item name="android:windowBackground">@color/passionBackground</item>
+        <item name="android:colorBackground">@color/passionBackground</item>
+        <item name="android:colorForeground">@color/passionForeground</item>
+        <item name="colorAccent">@color/passionAccent</item>
+        <item name="android:colorActivatedHighlight">@color/passionBackground</item>
+        <item name="android:textColorSecondaryInverse">@color/passionAccent</item>
+        <item name="android:listSelector">@drawable/listselector_passion</item>
+
+    </style>
+
+    <style name="AppThemeBase.Midnight" parent="@style/AppThemeBase">
+        <item name="colorPrimary">@color/midnightLight</item>
+        <item name="colorPrimaryDark">@color/midnightDark</item>
+        <item name="android:windowBackground">@color/midnightBackground</item>
+        <item name="android:colorBackground">@color/midnightBackground</item>
+        <item name="android:colorForeground">@color/midnightForeground</item>
+        <item name="android:textColorSecondary">@color/midnightSubText</item>
+        <item name="colorAccent">@color/midnightAccent</item>
+        <item name="android:colorActivatedHighlight">@color/midnightAccent</item>
+        <item name="android:textColorSecondaryInverse">@color/midnightAccent</item>
+        <item name="android:listSelector">@drawable/listselector_midnight</item>
+
+    </style>
+
+    <style name="AppThemeBase.Party" parent="@style/AppThemeBase">
+        <item name="colorPrimary">@color/partyPrimary</item>
+        <item name="colorPrimaryDark">@color/partyPrimaryDark</item>
+        <item name="android:windowBackground">@color/partyBackground</item>
+        <item name="android:colorBackground">@color/partyBackground</item>
+        <item name="android:colorForeground">@color/partyForeground</item>
+        <item name="android:textColorSecondary">@color/midnightSubText</item>
+        <item name="colorAccent">@color/partyAccent</item>
+        <item name="android:colorActivatedHighlight">@color/partyAccent</item>
+        <item name="android:textColorSecondaryInverse">@color/partyAccent</item>
+        <item name="android:listSelector">@drawable/listselector_party</item>
+
+    </style>
+
+    <style name="AppThemeBaseLight" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:colorBackground">#f4f2f2</item>
+        <item name="android:colorForeground">@color/darkForeground</item>
+        <item name="android:windowBackground">@android:color/white</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:textColorPrimary">@color/lightTextPrimary</item>
+        <item name="android:textColorSecondary">@color/lightTextSecondary</item>
+        <item name="android:textColorPrimaryInverse">@android:color/white</item>
+        <item name="android:listSelector">@drawable/songlist_selector_light</item>
+        <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
+        <item name="android:colorActivatedHighlight">#CCFFFFFF</item>
+    </style>
+
+    <style name="AppThemeWhite" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@android:color/white</item>
+        <item name="colorPrimaryDark">@android:color/white</item>
+        <item name="android:windowBackground">@android:color/white</item>
+        <item name="android:colorBackground">#e1e1e1</item>
+        <item name="android:colorForeground">@android:color/white</item>
+        <item name="android:listSelector">@drawable/songlist_selector_light</item>
+
+        <item name="android:textColorSecondary">@color/lightTextSecondary</item>
+        <item name="android:fastScrollThumbDrawable">@drawable/scroll_party</item>
+        <item name="android:colorActivatedHighlight">@color/fireLight</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:actionBarItemBackground">@android:color/white</item>
+        <item name="windowActionBar">false</item>
+        <item name="drawerArrowStyle">@style/DrawerArrowStyleLight</item>
+        <item name="android:actionMenuTextColor">@color/metalDark</item>
+        <item name="android:textColorPrimary">@color/lightTextPrimary</item>
+        <item name="android:textColorPrimaryInverse">@color/metalDark</item>
+        <item name="android:textColorSecondaryInverse">@color/mm1</item>
+
+
+    </style>
+
+    <style name="AppThemeBaseLight.Life" parent="AppThemeBaseLight">
+        <item name="colorPrimary">@color/lifeList</item>
+        <item name="colorPrimaryDark">@color/lifeDark</item>
+        <item name="android:listSelector">@drawable/listselector_life</item>
+        <item name="colorAccent">@color/lifeAccent</item>
+        <item name="android:fastScrollThumbDrawable">@drawable/scroll_life</item>
+        <item name="android:textColorSecondaryInverse">@color/lifeAccent</item>
+
+    </style>
+
+    <style name="AppThemeBaseLight.Indigo" parent="AppThemeBaseLight">
+        <item name="colorPrimary">@color/indiLight</item>
+        <item name="colorPrimaryDark">@color/indiDark</item>
+        <item name="android:listSelector">@drawable/listselector_light</item>
+        <item name="colorAccent">@color/indiAccent</item>
+        <item name="android:fastScrollThumbDrawable">@drawable/scroll_life</item>
+        <item name="android:textColorSecondaryInverse">@color/indiAccent</item>
+
+    </style>
+
+    <style name="AppThemeBaseLight.Marine" parent="AppThemeBaseLight">
+        <item name="colorPrimary">@color/aquaDark</item>
+        <item name="colorPrimaryDark">@color/aquaBorder</item>
+        <item name="android:colorActivatedHighlight">@color/aquaAccent</item>
+        <item name="android:listSelector">@drawable/songlist_selector_light</item>
+        <item name="colorAccent">@color/aquaAccent</item>
+        <item name="android:fastScrollThumbDrawable">@drawable/scroll_fire</item>
+        <item name="android:textColorSecondaryInverse">@color/aquaAccent</item>
+
+    </style>
+
+    <style name="AppThemeBaseLight.Earth" parent="AppThemeBaseLight">
+        <item name="colorPrimary">@color/earthLight</item>
+        <item name="colorPrimaryDark">@color/earthDark</item>
+        <item name="colorAccent">@color/earthAccent</item>
+        <item name="android:listSelector">@drawable/listselector_earth</item>
+        <item name="android:fastScrollThumbDrawable">@drawable/scroll_green</item>
+        <item name="android:textColorSecondaryInverse">@color/earthAccent</item>
+
+    </style>
+
+    <style name="AppThemeBaseLight.Ocean" parent="AppThemeBaseLight">
+        <item name="colorPrimary">@color/marineLight</item>
+        <item name="colorPrimaryDark">@color/marineDark</item>
+        <item name="colorAccent">@color/marineAccent</item>
+        <item name="android:listSelector">@drawable/listselector_light</item>
+        <item name="android:fastScrollThumbDrawable">@drawable/scroll_metal</item>
+        <item name="android:textColorSecondaryInverse">@color/marineAccent</item>
+
+    </style>
+
+    <style name="AppThemeBaseLight.Rad" parent="AppThemeBaseLight">
+        <item name="colorPrimary">@color/radLight</item>
+        <item name="colorPrimaryDark">@color/radDark</item>
+        <item name="colorAccent">@color/radAccent</item>
+        <item name="android:listSelector">@drawable/listselector_light</item>
+        <item name="android:fastScrollThumbDrawable">@drawable/scroll_ether</item>
+        <item name="android:textColorSecondaryInverse">@color/radAccent</item>
+
+    </style>
+
+    <style name="AppThemeBaseLight.Aqua" parent="AppThemeBaseLight">
+        <item name="colorPrimary">@color/marineLight</item>
+        <item name="colorPrimaryDark">@color/marineDark</item>
+        <item name="colorAccent">@color/marineAccent</item>
+        <item name="android:listSelector">@drawable/listselector_earth</item>
+        <item name="android:fastScrollThumbDrawable">@drawable/scroll_green</item>
+        <item name="android:textColorSecondaryInverse">@color/marineAccent</item>
+
+    </style>
+
+    <style name="AppThemeBaseLight.Fire" parent="AppThemeBaseLight">
+        <item name="colorPrimary">@color/fireLight</item>
+        <item name="colorPrimaryDark">@color/fireDark</item>
+        <item name="colorAccent">@color/fireAccent</item>
+        <item name="android:listSelector">@drawable/listselector_fire</item>
+        <item name="android:fastScrollThumbDrawable">@drawable/scroll_fire</item>
+        <item name="android:textColorSecondaryInverse">@color/fireAccent</item>
+
+    </style>
+
+    <style name="AppThemeBaseLight.Ether" parent="AppThemeBaseLight">
+        <item name="colorPrimary">@color/etherLight</item>
+        <item name="colorPrimaryDark">@color/etherDark</item>
+        <item name="colorAccent">@color/etherAccent</item>
+        <item name="android:listSelector">@drawable/listselector_ether</item>
+        <item name="android:fastScrollThumbDrawable">@drawable/scroll_ether</item>
+        <item name="android:textColorSecondaryInverse">@color/etherLight</item>
+
+    </style>
+
+    <style name="AppThemeBaseLight.Indi" parent="AppThemeBaseLight">
+        <item name="colorPrimary">@color/indiLight</item>
+        <item name="colorPrimaryDark">@color/indiDark</item>
+        <item name="colorAccent">@color/indiAccent</item>
+        <item name="android:listSelector">@drawable/listselector_ether</item>
+        <item name="android:fastScrollThumbDrawable">@drawable/scroll_ether</item>
+        <item name="android:textColorSecondaryInverse">@color/indiLight</item>
+
+    </style>
+
+    <style name="MyCustomTabLayout" parent="Widget.Design.TabLayout">
+        <item name="tabIndicatorHeight">2dp</item>
+        <item name="tabPaddingStart">20dp</item>
+        <item name="tabPaddingEnd">20dp</item>
+        <item name="tabTextAppearance">@style/MyCustomTabTextAppearance</item>
+        <item name="tabSelectedTextColor">#FFFFFFFF</item>
+    </style>
+
+    <style name="MyCustomTabTextAppearance" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">#a0ffffff</item>
+        <item name="textAllCaps">true</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="MyCustomTabLayout2" parent="Widget.Design.TabLayout">
+        <item name="tabIndicatorHeight">2dp</item>
+        <item name="tabPaddingStart">20dp</item>
+        <item name="tabPaddingEnd">20dp</item>
+        <item name="tabTextAppearance">@style/MyCustomTabText</item>
+        <item name="tabSelectedTextColor">#FFFFFFFF</item>
+    </style>
+
+    <style name="MyCustomTabText" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">#7effffff</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="textAllCaps">false</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="PopupMenu" parent="@style/Widget.AppCompat.PopupMenu">
+        <item name="overlapAnchor">true</item>
+    </style>
+
+    <style name="PopupMenu.Light" parent="@style/Widget.AppCompat.Light.PopupMenu">
+        <item name="overlapAnchor">true</item>
+    </style>
+
+    <style name="tab_text">
+        <item name="android:paddingLeft">2dp</item>
+        <item name="android:paddingRight">2dp</item>
+    </style>
+
+    <style name="listview_cus" parent="Base.Widget.AppCompat.ListView">
+        <item name="android:divider">@drawable/listdivider</item>
+        <item name="android:dividerHeight">0.3dp</item>
+    </style>
+
+    <style name="DrawerArrowStyleLight" parent="Widget.AppCompat.DrawerArrowToggle">
+        <item name="spinBars">true</item>
+        <item name="color">@color/metalDark</item>
+    </style>
+
+
+    <style name="DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
+        <item name="spinBars">true</item>
+        <item name="color">@android:color/white</item>
+    </style>
+
+    <style name="PoppupMenu" parent="android:Widget.PopupMenu">
+        <item name="android:popupBackground">@color/black_translucent</item>
+    </style>
+
+    <style name="scrollbar_yellow_style" parent="AppThemeBase">
+        <item name="android:scrollbarAlwaysDrawVerticalTrack">true</item>
+        <item name="android:scrollbarStyle">outsideOverlay</item>
+        <item name="android:scrollbars">vertical</item>
+        <item name="android:fadeScrollbars">false</item>
+        <item name="android:scrollbarSize">35dp</item>
+    </style>
+
+    <style name="SeekArc">
+        <item name="arcColor">@color/progress_gray_dark</item>
+    </style>
+
+    <style name="SeekArcLight">
+        <item name="arcColor">@color/progress_gray</item>
+    </style>
+
+    <style name="Animations" />
+
+    <!-- PopDownMenu -->
+    <style name="Animations.PopDownMenu" />
+
+    <style name="Animations.PopDownMenu.Left">
+        <item name="@android:windowEnterAnimation">@anim/grow_from_topleft_to_bottomright</item>
+        <item name="@android:windowExitAnimation">@anim/shrink_from_bottomright_to_topleft</item>
+    </style>
+
+    <style name="Animations.PopDownMenu.Right">
+        <item name="@android:windowEnterAnimation">@anim/grow_from_topright_to_bottomleft</item>
+        <item name="@android:windowExitAnimation">@anim/shrink_from_bottomleft_to_topright</item>
+    </style>
+
+    <style name="Animations.PopDownMenu.Center">
+        <item name="@android:windowEnterAnimation">@anim/grow_from_top</item>
+        <item name="@android:windowExitAnimation">@anim/shrink_from_bottom</item>
+    </style>
+
+    <!-- PopUpMenu -->
+    <style name="Animations.PopUpMenu" />
+
+    <style name="Animations.PopUpMenu.Left">
+        <item name="@android:windowEnterAnimation">@anim/grow_from_bottomleft_to_topright</item>
+        <item name="@android:windowExitAnimation">@anim/shrink_from_topright_to_bottomleft</item>
+    </style>
+
+    <style name="Animations.PopUpMenu.Right">
+        <item name="@android:windowEnterAnimation">@anim/grow_from_bottomright_to_topleft</item>
+        <item name="@android:windowExitAnimation">@anim/shrink_from_topleft_to_bottomright</item>
+    </style>
+
+    <style name="Animations.PopUpMenu.Center">
+        <item name="@android:windowEnterAnimation">@anim/grow_from_bottom</item>
+        <item name="@android:windowExitAnimation">@anim/shrink_from_top</item>
+    </style>
+
+    <style name="AppThemeBase.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppThemeBase.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="listTitleText">
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:textSize">@dimen/list_text_header_size</item>
+        <item name="android:paddingLeft">@dimen/list_padding</item>
+        <item name="android:paddingRight">@dimen/list_padding</item>
+    </style>
+
+    <style name="listDetailText">
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
+        <item name="android:textSize">@dimen/list_text_detail_size</item>
+        <item name="android:paddingLeft">@dimen/list_padding</item>
+        <item name="android:paddingRight">@dimen/list_padding</item>
+    </style>
+
+</resources>

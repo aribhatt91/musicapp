@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="@dimen/list_item_height"
+    android:clickable="true"
+    android:background="?android:listSelector"
+    android:orientation="horizontal"
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp"
+    android:id="@+id/listitem">
+
+    <!-- ListRow Left side Thumbnail image -->
+    <RelativeLayout
+        android:id="@+id/thumbnail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="5dip"
+        android:layout_marginEnd="5dp"
+        android:padding="3dip" >
+        <ImageView
+            android:id="@+id/list_image"
+            android:layout_width="@dimen/list_thumb_size"
+            android:layout_centerInParent="true"
+            android:layout_height="@dimen/list_thumb_size"
+            android:scaleType="centerCrop"
+            />
+    </RelativeLayout>
+    <!-- Menu Icon-->
+    <ImageView
+        android:id="@+id/expanded_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_more_vert_white_24dp"
+        android:tint="?android:textColorSecondary"
+        android:background="?selectableItemBackgroundBorderless"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        />
+    <!-- Song Name-->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/thumbnail"
+        android:layout_toEndOf="@+id/thumbnail"
+        android:layout_toLeftOf="@id/expanded_menu"
+        android:layout_toStartOf="@+id/expanded_menu"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="15dp"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:id="@+id/songTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="?android:textColorPrimary"
+            android:textSize="@dimen/list_text_header_size"
+            android:typeface="sans"
+            android:scrollHorizontally="true"
+            android:ellipsize="end"
+            android:maxLines="1"/>
+        <!-- Weather Information-->
+        <TextView
+            android:id="@+id/songArtist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:textColor="?android:textColorSecondary"
+            android:textSize="@dimen/list_text_detail_size"
+            android:scrollHorizontally="true"
+            android:ellipsize="end"
+            android:maxLines="1"/>
+    </LinearLayout>
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:layout_marginRight="@dimen/list_divider_margin_right"
+        android:layout_marginLeft="@dimen/list_divider_margin_left"
+        android:layout_marginStart="@dimen/list_divider_margin_left"
+        android:layout_marginEnd="@dimen/list_divider_margin_right"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/listdivider"
+        />
+</RelativeLayout>

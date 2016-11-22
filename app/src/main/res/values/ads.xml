@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="facebook_app_id">1618833158439619</string>
+    <string name="fb_banner_wh">1618833158439619_1620972271559041</string>
+
+    <string name="home_banner">ca-app-pub-6990279087572974/2140255848</string>
+    <string name="artist_banner">ca-app-pub-6990279087572974/3477388242</string>
+    <string name="album_banner">ca-app-pub-6990279087572974/4954121443</string>
+    <string name="genre_banner">ca-app-pub-6990279087572974/1861054246</string>
+    <string name="playlist_banner">ca-app-pub-6990279087572974/3337787440</string>
+    <string name="juke_banner">ca-app-pub-6990279087572974/4814520645</string>
+    <string name="whathot_banner">ca-app-pub-6990279087572974/6291253846</string>
+
+    <string name="home_interstitial">ca-app-pub-6990279087572974/5732850640</string>
+    <string name="artist_inter">ca-app-pub-6990279087572974/8906643044</string>
+    <string name="playlist_inter">ca-app-pub-6990279087572974/1383376243</string>
+    <string name="album_inter">ca-app-pub-6990279087572974/1752121845</string>
+    <string name="genre_inter"></string>
+    <string name="juke_inter"></string>
+</resources>

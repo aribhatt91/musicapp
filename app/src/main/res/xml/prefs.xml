@@ -1,0 +1,143 @@
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+    <PreferenceCategory android:title="Appearance"
+        >
+
+        <ListPreference
+            android:defaultValue="0"
+            android:dialogTitle="@string/theme_primary"
+            android:entries="@array/colors"
+            android:entryValues="@array/color_values"
+            android:key="prefColorPrimary"
+            android:summary="@string/theme_primary_description"
+            android:title="Skins" />
+
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="colourNavBar"
+            android:summary="@string/color_nav_bar"
+            android:title="@string/colourNavBar"/>
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="tintStat"
+            android:summary="@string/tint_status_summary"
+            android:title="@string/tint_status_title"/>
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="colourAlbum"
+            android:title="@string/colourAlbumOn"/>
+
+
+    </PreferenceCategory>
+    <PreferenceCategory android:title="Gallery">
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="showAll"
+            android:title="@string/title_showall"
+            android:summaryOff="@string/summary_showall"
+            android:summaryOn="@string/summary_showallOn"
+            />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="hideSmall"
+            android:title="@string/title_hidesmall"
+            android:summary="@string/summary_hidesmall"
+            />
+
+        <ListPreference
+            android:defaultValue="2"
+            android:dialogTitle="@string/default_page_pref"
+            android:entries="@array/default_page"
+            android:entryValues="@array/page_values"
+            android:summary="@string/default_page_option"
+            android:key="prefDefaultPage"
+            android:title="Default page" />
+        <ListPreference
+            android:defaultValue="0"
+            android:dialogTitle="Sort By"
+            android:entryValues="@array/sortvaluesSongs"
+            android:entries="@array/sortSongs"
+            android:key="sortSongs"
+            android:summary="@string/sort_songs"
+            android:title="Sort songs" />
+
+        <ListPreference
+            android:defaultValue="0"
+            android:dialogTitle="Sort By"
+            android:entryValues="@array/sortvaluesAlbums"
+            android:entries="@array/sortAlbums"
+            android:key="sortAlbums"
+            android:summary="@string/sort_albums"
+            android:title="Sort albums" />
+
+        <ListPreference
+            android:defaultValue="0"
+            android:entries="@array/album_grid_size"
+            android:entryValues="@array/album_grid_val"
+            android:summary="@string/album_grid_summary"
+            android:key="albumSize"
+            android:title="@string/album_grid_title" />
+
+        <ListPreference
+            android:defaultValue="1"
+            android:entries="@array/display_genre"
+            android:entryValues="@array/display_genre_val"
+            android:summary="@string/display_genre_summary"
+            android:key="displayGenre"
+            android:title="@string/display_genre" />
+
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="prefShowFab"
+            android:summaryOn="The shuffle button allows you to shuffle the entire library"
+            android:summaryOff="The shuffle button allows you to shuffle the entire library"
+            android:title="Show shuffle button"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="General">
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="prefUseMobileData"
+            android:summaryOn="@string/use_mobile_description_on"
+            android:summaryOff="@string/use_mobile_description_off"
+            android:title="@string/use_mobile"/>
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="prefAllowLogging"
+            android:summaryOn="@string/logging_on"
+            android:summaryOff="@string/logging_off"
+            android:title="@string/logging_description"/>
+        <Preference
+            android:defaultValue="false"
+            android:key="clearCache"
+            android:title="@string/clear_cache"
+            android:summary="@string/clear_cache_summary"/>
+        <Preference
+            android:defaultValue="false"
+            android:key="trimMem"
+            android:title="@string/trim_mem"
+            android:summary="@string/trim_mem_sum"/>
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/playback_header">
+
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="sysEq"
+            android:summary="@string/sys_eq_summary"
+            android:title="@string/use_system_eq"/>
+
+        <!--
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="headPlay"
+            android:summary="@string/head_plug_summary"
+            android:title="@string/head_plug_title"/>
+            -->
+
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

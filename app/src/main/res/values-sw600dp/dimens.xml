@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="gallery_grid_margin">24dp</dimen>
+    <dimen name="jb_recycler_margin">20dp</dimen>
+
+    <dimen name="recycler_list_left_margin">10dp</dimen>
+    <dimen name="recycler_list_right_margin">10dp</dimen>
+
+
+</resources>

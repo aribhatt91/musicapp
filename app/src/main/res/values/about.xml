@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="about_version">Version</string>
+    <string name="about_description">Onix Music is a power-packed music player for Android 4.1 and higher focused on
+        performance and panache</string>
+    <string name="lastfm_header">Artist images and biographies are provided by</string>
+    <string name="lastfm_description">Last.fm</string>
+    <string name="uses_header">Onix Music also uses the following open-source libraries:</string>
+    <string name="uses_aosp_header">Android Support Libraries</string>
+    <string name="uses_aosp_detail">Support-v4 23.2.1, Appcompat-v7 23.2.1, RecyclerView 23.2.1,
+        CardView 23.2.1, Design 23.2.1, Palette 23.2.1; distributed by the Android Open Source
+        Project under an Apache License, Version 2.0</string>
+    <string name="uses_gson_header">Gson</string>
+    <string name="uses_gson_detail">Version 2.4 distributed by Google, Inc. under an Apache License,
+        Version 2.0</string>
+    <string name="uses_glide_header">Glide</string>
+    <string name="uses_glide_detail">Version 3.6.1; distributed by Google, Inc. under a BSD License</string>
+    <string name="uses_vert_slider_header">VerticalSeekBar</string>
+    <string name="uses_vert_slider_detail">Version 0.5.2; distributed by Haruki Hasegawa
+        under an Apache License, Version 2.0</string>
+    <string name="ishani">Thanks Ishani, for compiling the crazy database of social media profiles..</string>
+    <string name="uses_stackoverflow">Last but not the least thanks to Akash, Shreshta, Subham and all my friends who helped me with testing the app</string>
+    <string name="text_drawable_header">Text Drawable</string>
+    <string name="text_drawable_text">Version 1.1, distributed by Amulya Khare under MIT license</string>
+    <string name="fab_header">FAB Reveal Layout</string>
+    <string name="fab_text">Version 1.0.0, distributed by Tomás Ruiz-López</string>
+    <string name="yt_api">Uses YouTube Android Player API Version 1.2.2 </string>
+    <string name="disclaimer">Disclaimer : I do not claim any ownership over any of the YouTube videos displayed in this application. They belong to their respective uploaders.</string>
+</resources>

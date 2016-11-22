@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="red">#bf360c</color>
+    <color name="ripple_red">#ffbf5232</color>
+
+    <color name="material_teal">@color/material_deep_teal_500</color>
+    <color name="ripple_material_teal">#ff149691</color>
+    <color name="glass">#2F414141</color>
+    <color name="milk">#40ffffff</color>
+    <color name="divider">#a1ffffff</color>
+
+    <color name="magenta">#ff9f0e46</color>
+
+    <color name="tv_selected">#fffdfb</color>
+    <color name="tv_normal">#de807e7c</color>
+    <color name="transparent">#00000000</color>
+    <color name="black">#ff000000</color>
+    <color name="white">#ececec</color>
+
+
+    <color name="progress_empty">#08000000</color>
+    <color name="accent">#40C4FF</color>
+
+
+    <color name="grey">@color/material_blue_grey_800</color>
+    <color name="light">@color/primary_material_light</color>
+
+    <color name="colorPrimary">@color/metalDark</color>
+    <color name="colorPrimaryDark">@color/metalDark</color>
+
+    <color name="metalBlackDark">#1a2122</color>
+    <color name="metalBlackLight">#293032</color>
+
+    <color name="windowBackgroundColor">#333333</color>
+    <color name="black_translucent">#81000000</color>
+    <color name="statusbar">#81555555</color>
+    <color name="defaultart">#2e2e2e</color>
+
+
+
+    <color name="translucent">#51000000</color>
+
+    <!-- METAL COLOURS -->
+    <color name="metalDark">#1c1c20</color>
+    <color name="metalList">#2f2e36</color>
+    <color name="metalBg">#25252b</color>
+    <color name="metalLight">#504E5A</color>
+    <color name="metalBorder">#8989A0</color>
+    <color name="metalTextS">#77788D</color>
+    <color name="metalTextB">#E9E0D5</color>
+    <color name="metalYellow">#ffe9c60e</color>
+
+    <color name="divider_color">#b6b6b6</color>
+
+    <!-- TEXT COLOURS -->
+    <color name="lightTextPrimary">#212121</color>
+    <color name="lightTextSecondary">#727272</color>
+    <color name="darkTextPrimary">#FFFFFFFF</color>
+    <color name="darkTextSecondary">#727272</color>
+
+    <!--BACKGROUND COLOURS -->
+    <color name="lightBackground">#212121</color>
+    <color name="lightForeground">#262626</color>
+    <color name="darkBackground">#d2d2d2</color>
+    <color name="darkForeground">#ffffff</color>
+
+    <!-- MARINE COLOURS -->
+    <color name="marineLight">#009688</color>
+    <color name="marineDark">#00796b</color>
+    <color name="marineAccent">#ffc107</color>
+
+    <!-- RADIANCE -->
+    <color name="radLight">#ffc107</color>
+    <color name="radDark">#ffa000</color>
+    <color name="radAccent">#7c4dff</color>
+
+    <color name="indiLight">#3f51b5</color>
+    <color name="indiDark">#303f9f</color>
+    <color name="indiAccent">#ff4081</color>
+
+
+
+    <!--EARTH COLOURS -->
+    <color name="earthLight">#ff8cb704</color>
+    <color name="earthPressed">#ff52740a</color>
+    <color name="earthDark">#FF789C05</color>
+    <color name="earthAccent">#008000</color>
+
+
+
+    <!-- AQUA COLOURS -->
+    <color name="aquaLight">#03A9F4</color>
+    <color name="aquaDark">#0288D1</color>
+    <color name="aquaBorder">#0069ab</color>
+    <color name="aquaAccent">#ffc107</color>
+
+
+    <!-- FIRE COLOURS -->
+    <color name="fireLight">#FF5722</color>
+    <color name="fireDark">#E64A19</color>
+    <color name="fireFab">#FF9800</color>
+    <color name="fireList">#FFCCBC</color>
+    <color name="fireAccent">#ff9800</color>
+
+
+    <!-- LIFE COLOURS -->
+    <color name="lifeLight">#f51f68</color>
+    <color name="lifeDark">#c2185d</color>
+    <color name="lifeAccent">#03a9f4</color>
+    <color name="lifeList">#e91e63</color>
+    
+    
+    <color name="passionDark">#9f202d</color>
+    <color name="passionLight">#ce2135</color>
+    <color name="passionAccent">#ce2135</color>
+    <color name="passionForeground">#202225</color>
+    <color name="passionBackground">#161718</color>
+
+    <!-- midnight blue -->
+
+    <color name="midnightDark">#FF02131E</color>
+    <color name="midnightLight">#071e35</color>
+    <color name="midnightAccent">#00b959</color>
+    <color name="midnightForeground">#031928</color>
+    <color name="midnightBackground">#04121f</color>
+    <color name="midnightSubText">#8be5f8fc</color>
+    
+    
+    <color name="partyPrimary">#161c3c</color>
+    <color name="partyPrimaryDark">#121935</color>
+    <color name="partyForeground">#121832</color>
+    <color name="partyBackground">#090e21</color>
+    <color name="partyAccent">#ef2a65</color>
+
+    <color name="pinkPrimary">#f63854</color>
+    <color name="pinkDark">#d9324b</color>
+    <color name="pinkForeground">#202020</color>
+    <color name="pinkBackground">#1a1a1a</color>
+    <color name="pinkAccent">#d9324b</color>
+
+
+
+
+
+
+
+    <color name="etherLight">#673AB7</color>
+    <color name="etherDark">#512DA8</color>
+    <color name="etherList">#daefa7f5</color>
+    <color name="etherAccent">#fb292d</color>
+
+
+    <!--navigation drawer colors-->
+
+    <color name="nav0">#fe5110</color>
+    <color name="nav1">#fb5054</color>
+    <color name="nav2">#fb292d</color>
+    <color name="nav3">#1680dc</color>
+    <color name="nav4">#03a9f4</color>
+    <color name="nav5">#ff52740a</color>
+    <color name="nav6">#ff8cb704</color>
+
+    <!--MUSIXMATCH COLOURS-->
+    <color name="mm1">#fb292d</color>
+    <color name="mm2">#fb5054</color>
+    <color name="mm3">#fe5110</color>
+    <color name="mm4">#fb8b6f</color>
+    <color name="mm5">#facbba</color>
+
+    <!--SEEK BAR COLOURS -->
+    <color name="progress_gray">#ffffff</color>
+    <color name="progress_gray_dark">#FF383838</color>
+
+    <color name="purple">#00ffffff</color>
+    <color name="blue">#00ffffff</color>
+
+    <color name="col1">#741cf2</color>
+    <color name="col2">#6557a6</color>
+    <color name="col3">#303546</color>
+
+    <color name="grid_background_default">#ffb0bec5</color>
+    <color name="grid_text">#77000000</color>
+    <color name="grid_detail_text">#97000000</color>
+
+
+
+</resources>

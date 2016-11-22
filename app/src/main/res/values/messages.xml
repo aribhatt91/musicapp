@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="new_mgs">
+        Its been a long time since you have received your last update. Sorry for the delay and thanks for your patience.
+        I have incorporated several changes in the user interface, including support for landscape orientation, sliding up music player, a new play pause button, besides fixing several bugs in previous versions.
+        Since I am a lone developer with limited set of test devices (one to be precise), I rely solely upon feedback from my users. Which is why I would encourage you to join the beta program. Just drop a mail and I shall add you to my beta list.
+        Beta users are promised to be ridden of frequent full screen popup ads.
+    </string>
+</resources>

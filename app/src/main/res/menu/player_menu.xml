@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/action_repeat"
+        android:title="@string/action_enable_repeat"
+        android:icon="@drawable/ic_sync_white_24dp"
+        app:showAsAction="always"/>
+
+    <item android:id="@+id/action_shuffle"
+        android:title="@string/action_enable_shuffle"
+        android:icon="@drawable/ic_shuffle_white_24dp"
+        app:showAsAction="always"/>
+    <item android:id="@+id/action_eq"
+        android:title="Equalizer"
+        android:icon="@drawable/ic_equalizer_white_24dp"
+        app:showAsAction="ifRoom"/>
+
+</menu>

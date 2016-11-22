@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Onix Music</string>
+    <string name="drawer_open">drawer_open</string>
+    <string name="drawer_close">drawer_close</string>
+
+    <string-array name="yt_menu">
+        <item>Watch on Youtube</item>
+    </string-array>
+
+
+    <string-array name="nav_drawer_items">
+        <item>Now Playing</item>
+        <item>Jukebox</item>
+        <item>What\'s Hot</item>
+        <item>Folders</item>
+        <item>Settings</item>
+        <item>Feedback</item>
+        <item>About</item>
+    </string-array>
+
+    <string-array name="nav_drawer_colors">
+        <item>@color/nav0</item>
+        <item>@color/nav1</item>
+        <item>@color/nav2</item>
+        <item>@color/nav3</item>
+        <item>@color/nav4</item>
+        <item>@color/nav5</item>
+        <item>@color/nav6</item>
+    </string-array>
+
+
+    <!-- Nav Drawer List Item Icons -->
+    <!-- Keep them in order as the titles are in -->
+
+
+    <array name="nav_drawer_icons_shadow">
+        <item>@drawable/small_icon</item>
+        <item>@drawable/jukebox</item>
+        <item>@drawable/yo</item>
+        <item>@drawable/folder_shadow</item>
+        <item>@drawable/settings_shadow</item>
+        <item>@drawable/pencil_shadow</item>
+        <item>@drawable/info_shadow</item>
+    </array>
+
+    <string-array name="mini_nav_drawer_items">
+        <item>Play</item>
+        <item>Add</item>
+        <item>Enqueue</item>
+        <item>Edit</item>
+        <item>Delete</item>
+
+    </string-array>
+
+    <string-array name="pages">
+        <item name="0">Playlists</item>
+        <item name="1">Songs</item>
+        <item name="2">Artists</item>
+        <item name="3">Albums</item>
+        <item name="4">Genres</item>
+    </string-array>
+
+
+    <string-array name="page_values">
+        <item name="0">0</item>
+        <item name="1">1</item>
+        <item name="2">2</item>
+        <item name="3">3</item>
+        <item name="4">4</item>
+        <item name="5">5</item>
+    </string-array>
+
+    <string-array name="default_page">
+        <item name="0">Genres</item>
+        <item name="1">Playlists</item>
+        <item name="2">Albums</item>
+        <item name="3">Songs</item>
+        <item name="4">Artists</item>
+        <item name="5">Last Selected</item>
+    </string-array>
+
+    <string-array name="themes">
+        <item name="0">Dark</item>
+        <item name="1">Light</item>
+    </string-array>
+    <string-array name="theme_values">
+        <item name="0">0</item>
+        <item name="1">1</item>
+    </string-array>
+
+
+    <string name="title_activity_display_album">DisplayAlbum</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="action_search">search</string>
+    <string name="title_activity_search_engine">SearchEngine</string>
+    <string name="search_hint">Music, Artists, Albums..</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_artist_detail">ArtistDetail</string>
+    <string name="title_activity_album_detail_demo">AlbumDetailDemo</string>
+    <string name="title_activity_genrea_detail_demo">GenreaDetailDemo</string>
+    <string name="title_activity_change_theme">ChangeThemeActivity</string>
+    <string name="title_activity_playlist_detail">PlaylistDetail</string>
+    <string name="title_activity_slide_up_demo">SlideUpDemo</string>
+
+
+    <string name="action_hide">Hide Panel</string>
+    <string name="action_show">Show Panel</string>
+    <string name="action_anchor_enable">Enable Anchor Point</string>
+    <string name="action_anchor_disable">Disable Anchor Point</string>
+    <string name="hello"><![CDATA[<b>The Awesome Sliding Up Panel</b><br/> Brought to you by<br/><a href="http://umanoapp.com">http://umanoapp.com</a>]]></string>
+    <string name="follow"><![CDATA[Follow us<br/>on <a href="http://twitter.com/umanoapp">Twitter</a>]]></string>
+
+
+    <!-- Preference Strings -->
+    <string name="settings_category_general">General</string>
+    <string name="appearance_header">Appearance</string>
+    <string name="playback_header">Playback</string>
+    <string name="default_page_pref">Default Page</string>
+    <string name="theme_primary">Choose a skin</string>
+    <string name="theme_primary_description">Choose one of these wonderful skins. Takes effect when you leave this page</string>
+    <string name="theme_base">Default Page</string>
+    <string name="default_page_option">Choose the page Onix starts with</string>
+    <string name="theme_base_description">Controls the background color. Takes effect when you leave this page</string>
+    <string name="add_shortcut">Add themed icon to launcher</string>
+    <string name="add_shortcut_description">Do you want to add a link to Onix Music that matches your current theme to your launcher?</string>
+    <string name="switch_to_now_playing">Automatically Switch to Now Playing</string>
+    <string name="use_mobile">Use mobile data</string>
+    <string name="use_mobile_description_on">Album artwork and other data will be always be downloaded</string>
+    <string name="use_mobile_description_off">Album artwork and other data will only be downloaded on Wi-Fi networks</string>
+    <string name="enable_additional_logging_detailed">Help make Onix Music better by sending anonymous usage data</string>
+    <string name="logging_on">Anonymous usage data and crash information will be sent to the developer</string>
+    <string name="logging_off">Only anonymous crash information will be sent to the developer</string>
+    <string name="logging_description">Help improve Onix Music</string>
+    <string name="sort_songs">Tell Onix how to sort songs in the gallery page</string>
+    <string name="sort_albums">Tell Onix how to sort albums in the galley page</string>
+    <string name="color_nav_bar">This is available on Lollipop and above</string>
+    <string name="colourNavBar">Colour Navigation Bar</string>
+    <string name="colourAlbumOn">Colour album grid footer</string>
+
+    <string-array name="tap">
+        <item name="0">Lyrics</item>
+        <item name="1">Add to Favorites</item>
+        <item name="2">Edit album cover</item>
+    </string-array>
+
+    <string-array name="tap_values">
+        <item name="0">0</item>
+        <item name="1">1</item>
+        <item name="2">2</item>
+    </string-array>
+
+
+    <string-array name="colors">
+        <item name="0">Metal</item>
+        <item name="1">Fire</item>
+        <item name="2">Earth</item>
+        <item name="3">Sky</item>
+        <item name="4">Ether</item>
+        <item name="5">Life</item>
+        <item name="6">Passion</item>
+        <item name="7">Midnight</item>
+        <item name="8">Marine</item>
+        <item name="9">Radiance</item>
+        <item name="10">Party</item>
+        <item name="11">Indigo</item>
+
+    </string-array>
+    <string-array name="color_values">
+        <item name="0">0</item>
+        <item name="1">1</item>
+        <item name="2">2</item>
+        <item name="3">3</item>
+        <item name="4">4</item>
+        <item name="5">5</item>
+        <item name="6">6</item>
+        <item name="7">7</item>
+        <item name="8">8</item>
+        <item name="9">9</item>
+        <item name="10">10</item>
+        <item name="11">11</item>
+
+    </string-array>
+
+    <string name="timer">Sleep Timer</string>
+
+    <string name="title_activity_all_tracks_by_artist">AllTracksByArtist</string>
+    <string name="title_activity_genre_details_demo">GenreDetailsDemo</string>
+    <string name="title_activity_now_playing">NowPlayingActivity</string>
+    <string name="title_activity_search">SearchActivity</string>
+
+    <!-- Activity titles -->
+    <string name="header_playlists">Playlists</string>
+    <string name="header_songs">Songs</string>
+    <string name="header_artists">Artists</string>
+    <string name="header_albums">Albums</string>
+    <string name="header_genres">Genres</string>
+    <string name="header_now_playing">Now Playing</string>
+    <string name="header_about">About</string>
+    <string name="header_settings">Settings</string>
+    <string name="header_search">Search</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_folders">FoldersActivity</string>
+
+    <plurals name="alert_confirm_duplicates">
+        <item quantity="one">Add duplicate song?</item>
+        <item quantity="other">Add duplicate songs?</item>
+    </plurals>
+    <plurals name="playlist_confirm_some_duplicates">
+        <item quantity="one">This playlist already contains one of these songs. Adding it again will
+            result in this playlist having a duplicated entry.</item>
+        <item quantity="other">This playlist already contains some of these songs. Adding them again
+            will result in this playlist having %d duplicated entries.</item>
+    </plurals>
+    <string name="playlist_confirm_duplicate">&#8220;%1$s&#8221; already contains &#8220;%2$s&#8221;.
+        Do you want to add it again?</string>
+    <string name="playlist_confirm_all_duplicates">This playlist already contains all of these
+        songs. Adding them again will result in %d duplicated entries.</string>
+    <plurals name="playlist_positive_add_duplicates">
+        <item quantity="one">Add duplicate</item>
+        <item quantity="other">Add duplicates</item>
+    </plurals>
+    <plurals name="message_added_songs">
+        <item quantity="one">Added 1 song to &#8220;%2$s&#8221;</item>
+        <item quantity="other">Added %1$d songs to &#8220;%2$s&#8221;</item>
+    </plurals>
+
+    <!-- Other Actions -->
+    <string name="action_skip">Skip</string>
+    <string name="action_play">Play</string>
+    <string name="action_pause">Pause</string>
+    <string name="action_previous">Previous</string>
+    <string name="action_shuffle">Shuffle</string>
+    <string name="action_repeat">Repeat</string>
+    <string name="action_undo">Undo</string>
+    <string name="action_info">Info</string>
+    <string name="action_create">Create</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="action_add">Add</string>
+    <string name="action_add_all">Add all</string>
+    <string name="action_add_new">Add new</string>
+    <string name="action_agree">Agree</string>
+    <string name="action_try_again">Rescan device</string>
+    <string name="action_open_settings">Open settings</string>
+    <string name="action_make_new_playlist">Make new playlist&#8230;</string>
+    <string name="action_add_rule">Add rule</string>
+    <string name="action_discard_changes">Discard changes</string>
+
+
+    <!-- Menu actions -->
+    <string name="action_refresh">Refresh Library</string>
+    <string name="action_go_to_queue">Queue</string>
+    <string name="action_export_playlist">Save queue as playlist&#8230;</string>
+    <string name="action_sort">Sort&#8230;</string>
+    <string name="action_sort_random">Randomize</string>
+    <string name="action_sort_name">Sort by name</string>
+    <string name="action_sort_artist">Sort by artist</string>
+    <string name="action_sort_album">Sort by album</string>
+    <string name="action_sort_play">Sort by play count</string>
+    <string name="action_sort_skip">Sort by skip count</string>
+    <string name="action_sort_date_added">Sort by date added</string>
+    <string name="action_sort_date_played">Sort by date played</string>
+    <string name="action_disable_shuffle">Disable shuffle</string>
+    <string name="action_enable_shuffle">Enable shuffle</string>
+    <string name="action_disable_repeat">Disable repeat</string>
+    <string name="action_enable_repeat">Enable repeat</string>
+    <string name="action_enable_repeat_one">Enable repeat one</string>
+    <string name="action_add_to_playlist">Add queue to playlist&#8230;</string>
+    <string name="action_done">Done</string>
+    <string name="action_like">Add to Favorites</string>
+    <string name="action_unlike">Remove from Favorites</string>
+    <string name="action_scan">Rescan</string>
+    <string name="action_equalizer">Equalizer</string>
+    <string name="action_rate">Feedback</string>
+    <string name="action_menu">Menu</string>
+    <string name="action_show_queue">Queue</string>
+
+    <string name="upnext">Up Next</string>
+
+    <string name="clear_queue">Clear Queue</string>
+
+    <string name="action_edit_playlist_rules">Edit filters</string>
+
+
+    <!-- Confirmation messages -->
+    <string name="confirm_disable_shuffle">Disabled shuffle</string>
+    <string name="confirm_enable_shuffle">Enabled shuffle</string>
+    <string name="confirm_disable_repeat">Disabled repeat</string>
+    <string name="confirm_enable_repeat">Enabled repeat</string>
+    <string name="confirm_enable_repeat_one">Enabled repeat one</string>
+    <string name="confirm_refresh_library">Library refreshed</string>
+
+    <!-- Error messages -->
+    <string name="message_refresh_library_no_permission">Onix doesn\'t have permission to read
+        your music</string>
+    <string name="message_create_playlist_error_no_name">Can\'t create a playlist with no name</string>
+    <string name="message_play_error_not_found">This song couldn\'t be played</string>
+    <string name="error_hint_duplicate_playlist">Enter a unique playlist name</string>
+    <string name="error_hint_empty_playlist">Enter a playlist name</string>
+    <!-- Formatted Strings -->
+    <string name="message_added_song">Added &#8220;%1$s&#8221; to &#8220;%2$s&#8221;</string>
+    <string name="message_created_playlist">Created playlist &#8220;%1$s&#8221;</string>
+    <string name="message_removed_playlist">Deleted playlist &#8220;%1$s&#8221;</string>
+    <string name="message_removed_song">Removed song &#8220;%1$s&#8221;</string>
+    <string name="message_create_playlist_error_exists">Couldn\'t create playlist &#8220;%1$s&#8221;
+        because it already exists</string>
+    <string name="message_play_error_io_exception">Something went wrong</string>
+    <string name="message_sorted_playlist_random">Randomized &#8220;%1$s&#8221;</string>
+    <string name="message_sorted_playlist_name">Sorted &#8220;%1$s&#8221; by name</string>
+    <string name="message_sorted_playlist_artist">Sorted &#8220;%1$s&#8221; by artist name</string>
+    <string name="message_sorted_playlist_album">Sorted &#8220;%1$s&#8221; by album name</string>
+    <string name="message_sorted_playlist_play">Sorted &#8220;%1$s&#8221; by play count</string>
+    <string name="message_sorted_playlist_skip">Sorted &#8220;%1$s&#8221; by skip count</string>
+    <string name="message_sorted_playlist_date_added">Sorted &#8220;%1$s&#8221; by date added</string>
+    <string name="message_sorted_playlist_date_played">Sorted &#8220;%1$s&#8221; by date played</string>
+    <string name="header_add_song_name_to_playlist">Add &#8220;%1$s&#8221; to playlist</string>
+    <string name="confirm_add_songs">Added %1$s songs to playlist &#8220;%2$s&#8221;</string>
+    <string name="title_activity_whats_hot">WhatsHotActivity</string>
+    <string name="title_activity_queue">QueueActivity</string>
+
+
+    <!-- Empty state & unknown strings -->
+    <string name="nothing_playing">Nothing is playing</string>
+    <string name="no_artist">Unknown artist</string>
+    <string name="no_album">Unknown album</string>
+    <string name="no_description">No description available</string>
+    <string name="various_artists">Various Artists</string>
+    <string name="unknown_artist">Unknown Artist</string>
+    <string name="unknown_album">Unknown Album</string>
+    <string name="unknown">Unknown</string>
+    <string name="empty_no_permission">Onix needs permission to read your music library</string>
+    <string name="empty_no_permission_detail">To show your music, grant Jockey access to storage</string>
+    <string name="empty">Couldn\'t find any music here</string>
+    <string name="empty_detail">You can sync songs from your computer or download them from the Internet</string>
+    <string name="empty_playlists">You don\'t have any playlists</string>
+    <string name="empty_playlists_detail">You can make a new one by pressing the &#8220;+&#8221; button</string>
+    <string name="empty_playlist">This playlist is empty</string>
+    <string name="empty_playlist_detail">You can add songs from the library page</string>
+    <string name="empty_auto_playlist">This playlist is empty</string>
+    <string name="empty_auto_playlist_detail">No songs matched your filters</string>
+    <string name="empty_search">No results found</string>
+    <string name="empty_queue">Nothing is playing</string>
+    <string name="empty_queue_detail">You can play music from the library page</string>
+    <string name="empty_error_album">Couldn\'t load album</string>
+    <string name="empty_error_artist">Couldn\'t load artist</string>
+    <string name="empty_error_genre">Couldn\'t load genre</string>
+    <string name="no_lyrics">No lyrics found.</string>
+
+    <string name="empty_recent">It seems you have not added or played any song recently!</string>
+    <string name="headset_play">Start playing on headset plug in</string>
+    <string name="headset_setting">Headset Options</string>
+
+    <!-- Data types -->
+    <string name="playlist">Playlist</string>
+    <string name="playlist_auto">Smart Playlist</string>
+
+    <!-- Other headers -->
+    <string name="header_create_playlist">Create playlist</string>
+    <string name="header_add_queue_to_playlist">Add queue to playlist</string>
+    <string name="playlist_auto_new">New Smart Playlist</string>
+
+    <!-- First start Strings -->
+    <string name="first_launch_title">Welcome to Onix</string>
+    <string name="first_launch_detail"><![CDATA[By using this application, you agree to send
+        anonymous crash reports.
+        <br /><br />All data collected is purely anonymous and helps greatly to improve Jockey.
+        This information will kept confidential with the developer and is subject to the
+        <a href="http://try.crashlytics.com/terms/">Crashlytics privacy policy</a>]]>.
+    </string>
+    <string name="disable_anim">
+        Some devices may have issues with animated views and transitions and may produce aesthetically unpleasant results.
+    </string>
+    <string name="title_activity_song_tag">SongTagActivity</string>
+    <string name="title_activity_juke_box">JukeBoxActivity</string>
+    <string name="title_activity_album_tag_editor">AlbumTagEditorActivity</string>
+
+    <string name="format_time">%1$s:%2$s</string>
+    <string name="title_activity_about">AboutActivity</string>
+    <string name="use_system_eq">Prefer System Equalizer</string>
+    <string name="sys_eq_summary">Onix will look for the stock equalizers in your system</string>
+    <string name="title_activity_lyrics">LyricsActivity</string>
+    <string name="title_activity_recent">RecentActivity</string>
+
+    <string name="title_hidesmall">Hide small audio</string>
+    <string name="summary_hidesmall">Hide audio files with duration less than 30 seconds</string>
+
+    <string name="title_showall">Show all audio files</string>
+    <string name="summary_showall">Enabling this option will show all audio files including ringtones, alarms, notifications etc.</string>
+    <string name="summary_showallOn">Disabling this option will hide ringtones, alarms and notifications</string>
+
+    <string name="display_genre">Display genres as</string>
+    <string name="display_genre_summary">Displaying genres as grid may sometimes slow down scrolling speed due to high quality album art.</string>
+
+    <string name="album_grid_title">Album grid size</string>
+    <string name="album_grid_summary">Choosing default will let the app decide the grid span according to your device type</string>
+    <string name="clear_cache">Clear Cache</string>
+    <string name="clear_cache_summary">Clear the cached artworks in case some artworks are displayed incorrectly</string>
+
+    <string name="trim_mem">Trim memory</string>
+    <string name="trim_mem_sum">Saving preferences and records of played songs takes up memory, often more than needed. Click to free up unused space from databases.</string>
+
+    <string name="head_plug_title">Headset Plug</string>
+    <string name="head_plug_summary">Start playing automatically when headset plugged in</string>
+
+    <string name="phone_call_title">Restart playing on ending phonecall</string>
+    <string name="phone_call_summary">Restart playing on ending Phonecall</string>
+    <string name="tint_status_title">Tint status bar</string>
+    <string name="tint_status_summary">Color the status bar according to album art</string>
+
+
+    <!-- CONTENT DESCRIPTION -->
+
+
+</resources>
