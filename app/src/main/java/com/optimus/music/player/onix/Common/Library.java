@@ -591,7 +591,7 @@ public class Library {
                         cur.getInt(cur.getColumnIndex(MediaStore.Audio.Media.TRACK))
 
                 );
-                
+
                 File music = new File(s.location);
                 String path = "";
                 if(music.exists()){
