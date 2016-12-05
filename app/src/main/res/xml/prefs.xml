@@ -94,9 +94,25 @@
             android:summaryOn="The shuffle button allows you to shuffle the entire library"
             android:summaryOff="The shuffle button allows you to shuffle the entire library"
             android:title="Show shuffle button"/>
+        <MultiSelectListPreference
+            android:key="excludeFolders"
+            android:title="@string/ex_folder_title"
+            android:entries="@array/empty_array"
+            android:entryValues="@array/empty_array"
+            android:defaultValue="@array/empty_array"
+            android:summary="@string/ex_folder_summ"/>
     </PreferenceCategory>
 
     <PreferenceCategory android:title="General">
+        <ListPreference
+            android:defaultValue="0"
+            android:dialogTitle="@string/dbl_title"
+            android:entryValues="@array/dbl_tap_vals"
+            android:entries="@array/dbl_tap_list"
+            android:key="doubleTap"
+            android:summary="@string/dbl_summ"
+            android:title="@string/dbl_title" />
+
         <SwitchPreference
             android:defaultValue="true"
             android:key="prefUseMobileData"

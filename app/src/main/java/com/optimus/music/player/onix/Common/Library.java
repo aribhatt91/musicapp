@@ -79,6 +79,13 @@ public class Library {
     public static HashMap<Genre, Set<Long>> genMap = new HashMap<>();
 
 
+    private static String[] folderpaths;
+    private static String[] foldernames;
+    private static Set<String> allFolders = new HashSet<>();
+
+    private static Set<Long> incArtists = new HashSet<>();
+    private static Set<Long> incAlbums = new HashSet<>();
+
 
     private static final ArrayList<Playlist> playlistLib = new ArrayList<>();
     private static final ArrayList<Song> songLib = new ArrayList<>();
@@ -497,9 +504,21 @@ public class Library {
     }
 
     public static ArrayList<Song> scanSongs(Context context){
+        incArtists.clear();
+        incAlbums.clear();
+        allFolders.clear();
         ArrayList<Song> songs = new ArrayList<>();
         Song s;
         String orderby;
+        Set<String> exFolders = Prefs.getExcludedFolders(context);
+        String msg = "";
+
+        for (String str : exFolders) {
+            msg += "\n" + str;
+        }
+
+        //Toast.makeText(context, msg, Toast.LENGTH_LONG).show();
+
 
         switch (Prefs.getSongSortOrder(context)){
             case 0:
@@ -570,16 +589,35 @@ public class Library {
                         cur.getInt(cur.getColumnIndex(MediaStore.Audio.Media.ALBUM_ID)),
                         cur.getInt(cur.getColumnIndex(MediaStore.Audio.Media.ARTIST_ID)),
                         cur.getInt(cur.getColumnIndex(MediaStore.Audio.Media.TRACK))
+
                 );
-
-
-                if(small){
-                    if(s.songDuration >= 30000){
-                        songs.add(s);
-                    }
-                }else {
-                    songs.add(s);
+                
+                File music = new File(s.location);
+                String path = "";
+                if(music.exists()){
+                    path = music.getParent();
+                    allFolders.add(path);
                 }
+
+
+
+                if(!exFolders.contains(path)){
+
+                    if(small){
+                        if(s.songDuration >= 30000){
+                            songs.add(s);
+                            incAlbums.add(s.albumId);
+                            incArtists.add(s.artistId);
+                        }
+                    }else {
+                        songs.add(s);
+                        incAlbums.add(s.albumId);
+                        incArtists.add(s.artistId);
+                    }
+
+                }
+
+
             }
             cur.close();
         }
@@ -621,14 +659,17 @@ public class Library {
 
             for (int i = 0; i < cursor.getCount(); i++) {
                 cursor.moveToPosition(i);
-                albums.add(new Album(
+                Album a = new Album(
                         cursor.getLong(cursor.getColumnIndexOrThrow(MediaStore.Audio.Albums._ID)),
                         cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.Albums.ALBUM)),
                         cursor.getInt(cursor.getColumnIndexOrThrow(MediaStore.Audio.Albums.NUMBER_OF_SONGS)),
                         cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.Albums.ARTIST)),
                         cursor.getInt(cursor.getColumnIndexOrThrow(MediaStore.Audio.Albums.LAST_YEAR)),
                         cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.Albums.ALBUM_ART))
-                ));
+                );
+                if(incAlbums.contains(a.albumId)){
+                    albums.add(a);
+                }
             }
 
             cursor.close();
@@ -659,7 +700,9 @@ public class Library {
                         cur.getInt(cur.getColumnIndex(MediaStore.Audio.Artists.NUMBER_OF_ALBUMS))
 
                 );
-                artists.add(a);
+                if(incArtists.contains(a.artistId)) {
+                    artists.add(a);
+                }
             }
             cur.close();
         }
@@ -779,18 +822,23 @@ public class Library {
             if (genreCur != null) {
 
 
-                if (genreCur.getCount() > 0 && thisGenreId > 0) {
-                    genres.add(new Genre(thisGenreId, cur.getString(cur.getColumnIndex(MediaStore.Audio.Genres.NAME))));
-                }
+
 
 
                 genreCur.moveToFirst();
 
                 final int ID_INDEX = genreCur.getColumnIndex(MediaStore.Audio.Media._ID);
+                int cnt = 0;
                 for (int j = 0; j < genreCur.getCount(); j++) {
                     genreCur.moveToPosition(j);
                     final Song s = findSongById(genreCur.getInt(ID_INDEX));
-                    if (s != null) s.genreId = thisGenreId;
+                    if (s != null) {
+                        s.genreId = thisGenreId;
+                        cnt++;
+                    }
+                }
+                if (cnt>0 && genreCur.getCount() > 0 && thisGenreId > 0) {
+                    genres.add(new Genre(thisGenreId, cur.getString(cur.getColumnIndex(MediaStore.Audio.Genres.NAME))));
                 }
                 genreCur.close();
             }
@@ -1380,11 +1428,12 @@ public class Library {
 
         if(cur != null) {
             cur.moveToFirst();
+            Set<String> exFolders = Prefs.getExcludedFolders(context);
 
 
             for (int k = 0; k < cur.getCount(); k++) {
                 cur.moveToPosition(k);
-                songs.add(new Song(cur.getString(cur.getColumnIndexOrThrow(MediaStore.Audio.Media.TITLE)),
+                Song s = new Song(cur.getString(cur.getColumnIndexOrThrow(MediaStore.Audio.Media.TITLE)),
                         cur.getLong(cur.getColumnIndexOrThrow(MediaStore.Audio.Media._ID)),
                         cur.getString(cur.getColumnIndexOrThrow(MediaStore.Audio.Media.ALBUM)),
                         cur.getString(cur.getColumnIndexOrThrow(MediaStore.Audio.Media.ARTIST)),
@@ -1393,9 +1442,16 @@ public class Library {
                         cur.getInt(cur.getColumnIndexOrThrow(MediaStore.Audio.Media.YEAR)),
                         cur.getInt(cur.getColumnIndexOrThrow(MediaStore.Audio.Media.DATE_ADDED)),
                         cur.getLong(cur.getColumnIndexOrThrow(MediaStore.Audio.Media.ALBUM_ID)),
-                        cur.getLong(cur.getColumnIndexOrThrow(MediaStore.Audio.Media.ARTIST_ID)))
+                        cur.getLong(cur.getColumnIndexOrThrow(MediaStore.Audio.Media.ARTIST_ID)));
 
-                );
+                File f = new File(s.location);
+                String path = "";
+                if(f.exists()){
+                    path = f.getParent();
+                }
+                if(!exFolders.contains(path)){
+                    songs.add(s);
+                }
             }
         }
 
@@ -1448,9 +1504,11 @@ public class Library {
             return songEntries;
         }
 
+        Set<String> exFolders = Prefs.getExcludedFolders(context);
+
         for (int i = 0; i < cur.getCount(); i++) {
             cur.moveToPosition(i);
-            songEntries.add(new Song(
+            Song s = new Song(
                     cur.getString(cur.getColumnIndex(MediaStore.Audio.Playlists.Members.TITLE)),
                     cur.getInt(cur.getColumnIndex(MediaStore.Audio.Playlists.Members.AUDIO_ID)),
                     cur.getString(cur.getColumnIndex(MediaStore.Audio.Playlists.Members.ARTIST)),
@@ -1460,7 +1518,15 @@ public class Library {
                     cur.getInt(cur.getColumnIndex(MediaStore.Audio.Playlists.Members.YEAR)),
                     cur.getInt(cur.getColumnIndex(MediaStore.Audio.Playlists.Members.DATE_ADDED)),
                     cur.getInt(cur.getColumnIndex(MediaStore.Audio.Playlists.Members.ALBUM_ID)),
-                    cur.getInt(cur.getColumnIndex(MediaStore.Audio.Playlists.Members.ARTIST_ID))));
+                    cur.getInt(cur.getColumnIndex(MediaStore.Audio.Playlists.Members.ARTIST_ID)));
+            File f = new File(s.location);
+            String path = "";
+            if(f.exists()){
+                path = f.getParent();
+            }
+            if(!exFolders.contains(path)){
+                songEntries.add(s);
+            }
         }
         cur.close();
 
@@ -2169,7 +2235,7 @@ public class Library {
 
                 
                 try {
-final File f = new File(name);
+                    final File f = new File(name);
                     if (!f.delete()) {
                         Log.e("Library", "failed to delete file " + name);
                         if(showToast)
@@ -2527,13 +2593,15 @@ final File f = new File(name);
                 MediaStore.Audio.Media.DATE_ADDED + " DESC"
         );
 
+        Set<String> exFolders = Prefs.getExcludedFolders(context);
+
         if (cur != null) {
 
 
             cur.moveToFirst();
             for (int i = 0; i < cur.getCount(); i++) {
                 cur.moveToPosition(i);
-                recent.add(new Song(
+                Song s = new Song(
                         cur.getString(cur.getColumnIndex(MediaStore.Audio.Media.TITLE)),
                         cur.getInt(cur.getColumnIndex(MediaStore.Audio.Media._ID)),
                         cur.getString(cur.getColumnIndex(MediaStore.Audio.Media.ARTIST)),
@@ -2544,7 +2612,17 @@ final File f = new File(name);
                         cur.getInt(cur.getColumnIndex(MediaStore.Audio.Media.DATE_ADDED)),
                         cur.getInt(cur.getColumnIndex(MediaStore.Audio.Media.ALBUM_ID)),
                         cur.getInt(cur.getColumnIndex(MediaStore.Audio.Media.ARTIST_ID))
-                ));
+                );
+
+                File music = new File(s.location);
+                String path = "";
+                if(music.exists()){
+                    path = music.getParent();
+                }
+
+                if(!exFolders.contains(path)){
+                    recent.add(s);
+                }
 
             }
             cur.close();
@@ -2614,6 +2692,8 @@ final File f = new File(name);
 
         if (cur != null) {
 
+            Set<String> exFolders = Prefs.getExcludedFolders(context);
+
 
             cur.moveToFirst();
 
@@ -2631,12 +2711,20 @@ final File f = new File(name);
                         cur.getInt(cur.getColumnIndex(MediaStore.Audio.Media.ALBUM_ID)),
                         cur.getInt(cur.getColumnIndex(MediaStore.Audio.Media.ARTIST_ID))
                 );
-                if(idlist.size()<6) {
-                    if (!idlist.contains(s.albumId)) {
-                        idlist.add(s.albumId);
+                File music = new File(s.location);
+                String path = "";
+
+                if(music.exists()){
+                    path = music.getParent();
+                }
+                if(!exFolders.contains(path)) {
+                    if (idlist.size() < 6) {
+                        if (!idlist.contains(s.albumId)) {
+                            idlist.add(s.albumId);
+                        }
+                    } else {
+                        break;
                     }
-                }else{
-                break;
                 }
 
             }
@@ -2772,14 +2860,17 @@ final File f = new File(name);
 
                 for (int i = 0; i < cursor.getCount(); i++) {
                     cursor.moveToPosition(i);
-                    recent.add(new Album(
+                    Album a = new Album(
                             cursor.getLong(cursor.getColumnIndexOrThrow(MediaStore.Audio.Albums._ID)),
                             cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.Albums.ALBUM)),
                             cursor.getInt(cursor.getColumnIndexOrThrow(MediaStore.Audio.Albums.NUMBER_OF_SONGS)),
                             cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.Albums.ARTIST)),
                             cursor.getInt(cursor.getColumnIndexOrThrow(MediaStore.Audio.Albums.LAST_YEAR)),
                             cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.Albums.ALBUM_ART))
-                    ));
+                    );
+                    if(incAlbums.contains(a.albumId)){
+                        recent.add(a);
+                    }
                 }
                 cursor.close();
             }
@@ -2833,11 +2924,12 @@ final File f = new File(name);
                     null);
 
             if (cur != null && cur.moveToFirst()) {
+                Set<String> exFolders = Prefs.getExcludedFolders(context);
 
 
                 for (int i = 0; i < cur.getCount(); i++) {
                     cur.moveToPosition(i);
-                    most.add(new Song(
+                    Song s = new Song(
                             cur.getString(cur.getColumnIndex(MediaStore.Audio.Media.TITLE)),
                             cur.getLong(cur.getColumnIndex(MediaStore.Audio.Media._ID)),
                             cur.getString(cur.getColumnIndex(MediaStore.Audio.Media.ARTIST)),
@@ -2848,7 +2940,16 @@ final File f = new File(name);
                             cur.getInt(cur.getColumnIndex(MediaStore.Audio.Media.DATE_ADDED)),
                             cur.getInt(cur.getColumnIndex(MediaStore.Audio.Media.ALBUM_ID)),
                             cur.getInt(cur.getColumnIndex(MediaStore.Audio.Media.ARTIST_ID))
-                    ));
+                    );
+
+                    File f = new File(s.location);
+                    String path = "";
+                    if(f.exists()){
+                        path = f.getParent();
+                    }
+                    if(!exFolders.contains(path)){
+                        most.add(s);
+                    }
                 }
                 cur.close();
 
@@ -2897,10 +2998,12 @@ final File f = new File(name);
 
             if (cur != null && cur.moveToFirst()) {
 
+                Set<String> exFolders = Prefs.getExcludedFolders(context);
+
 
                 for (int i = 0; i < cur.getCount(); i++) {
                     cur.moveToPosition(i);
-                    recent.add(new Song(
+                    Song s = new Song(
                             cur.getString(cur.getColumnIndex(MediaStore.Audio.Media.TITLE)),
                             cur.getLong(cur.getColumnIndex(MediaStore.Audio.Media._ID)),
                             cur.getString(cur.getColumnIndex(MediaStore.Audio.Media.ARTIST)),
@@ -2911,7 +3014,15 @@ final File f = new File(name);
                             cur.getInt(cur.getColumnIndex(MediaStore.Audio.Media.DATE_ADDED)),
                             cur.getInt(cur.getColumnIndex(MediaStore.Audio.Media.ALBUM_ID)),
                             cur.getInt(cur.getColumnIndex(MediaStore.Audio.Media.ARTIST_ID))
-                    ));
+                    );
+                    File f = new File(s.location);
+                    String path = "";
+                    if(f.exists()){
+                        path = f.getParent();
+                    }
+                    if(!exFolders.contains(path)){
+                        recent.add(s);
+                    }
                 }
                 cur.close();
 
@@ -2968,22 +3079,23 @@ final File f = new File(name);
                     ids,
                     null);
 
-            if (cursor == null) {
-                throw new RuntimeException("Content resolver query returned null");
+            if (cursor != null) {
+
+
+                for (int i = 0; i < cursor.getCount(); i++) {
+                    cursor.moveToPosition(i);
+                    recent.add(new Album(
+                            cursor.getLong(cursor.getColumnIndexOrThrow(MediaStore.Audio.Albums._ID)),
+                            cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.Albums.ALBUM)),
+                            cursor.getInt(cursor.getColumnIndexOrThrow(MediaStore.Audio.Albums.NUMBER_OF_SONGS)),
+                            cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.Albums.ARTIST)),
+                            cursor.getInt(cursor.getColumnIndexOrThrow(MediaStore.Audio.Albums.LAST_YEAR)),
+                            cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.Albums.ALBUM_ART))
+                    ));
+                }
+                cursor.close();
             }
 
-            for (int i = 0; i < cursor.getCount(); i++) {
-                cursor.moveToPosition(i);
-                recent.add(new Album(
-                        cursor.getLong(cursor.getColumnIndexOrThrow(MediaStore.Audio.Albums._ID)),
-                        cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.Albums.ALBUM)),
-                        cursor.getInt(cursor.getColumnIndexOrThrow(MediaStore.Audio.Albums.NUMBER_OF_SONGS)),
-                        cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.Albums.ARTIST)),
-                        cursor.getInt(cursor.getColumnIndexOrThrow(MediaStore.Audio.Albums.LAST_YEAR)),
-                        cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.Albums.ALBUM_ART))
-                ));
-            }
-            cursor.close();
 
 
         }
@@ -3212,11 +3324,29 @@ final File f = new File(name);
 
     }
 
+    public static void parseAllMusicFolders(){
+        if(allFolders!=null && allFolders.size()>0) {
+            foldernames = new String[allFolders.size()];
+            folderpaths = new String[allFolders.size()];
+            int cnt = 0;
+            for (String str : allFolders) {
+                String name = getFolderName(str);
+                try {
+                    folderpaths[cnt] = str;
+                    foldernames[cnt] = name;
+                    cnt++;
+                } catch (Exception e) {
+
+                }
+            }
+        }
+    }
+
     public static ArrayList<MusicFolder> getAllMusicFolders(Context context){
         ArrayList<MusicFolder> musicFolders = new ArrayList<>();
-        ArrayList<String> dirlist = new  ArrayList<>();
-
+        ArrayList<String> dirlist = new ArrayList<>();
         Set<String> set = new LinkedHashSet<String>();
+
 
         for (Song s: songLib) {
             File music = new File(s.location);
@@ -3235,8 +3365,17 @@ final File f = new File(name);
                     new MusicFolder(name, str, (numSongs+ " " +((numSongs>1)?"songs":"song")))
             );
         }
+        Collections.sort(musicFolders, MusicFolder.DISPLAY_NAME_COMPARATOR);
 
         return musicFolders;
+    }
+
+    public static String[] getFolderPaths(){
+        return folderpaths;
+    }
+
+    public static String[] getFoldernames(){
+        return foldernames;
     }
 
     public static ArrayList<Song> getSongsByFolder(String path){
