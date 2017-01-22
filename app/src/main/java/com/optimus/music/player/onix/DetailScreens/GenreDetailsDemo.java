@@ -97,14 +97,17 @@ public class GenreDetailsDemo extends NowPlayingActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_four_square);
 
+        try {
 
+            Intent i = getIntent();
+            b = i.getExtras();
+            name = b.getString("genre_name");
+            genreID = b.getLong("genreid");
 
-        Intent i = getIntent();
-        b = i.getExtras();
-        name = b.getString("genre_name");
-        genreID = b.getLong("genreid");
+            reference = new Genre(genreID, name);
+        }catch (Exception e){
 
-        reference = new Genre(genreID, name);
+        }
         fab = (FloatingActionButton) findViewById(R.id.fab2);
         fab.setOnClickListener(this);
 

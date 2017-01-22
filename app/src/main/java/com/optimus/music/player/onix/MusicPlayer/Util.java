@@ -3,6 +3,7 @@ package com.optimus.music.player.onix.MusicPlayer;
 import android.app.Activity;
 import android.content.ContentUris;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
@@ -19,6 +20,7 @@ import android.media.audiofx.AudioEffect;
 import android.net.Uri;
 import android.os.Build;
 import android.os.ParcelFileDescriptor;
+import android.support.v7.app.AlertDialog;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.Window;
@@ -33,9 +35,18 @@ import com.optimus.music.player.onix.Common.Library;
 import com.optimus.music.player.onix.MusicPlayer.PlayerController;
 import com.optimus.music.player.onix.Common.Instances.Song;
 import com.optimus.music.player.onix.R;
+import com.optimus.music.player.onix.RecyclerViewUtils.ViewHolders.Misc.Navigate;
 import com.optimus.music.player.onix.SettingsActivity.Prefs;
 import com.optimus.music.player.onix.SettingsActivity.Themes;
+import com.optimus.music.player.onix.TagEditorActivity.LyricsActivity;
 
+import org.jaudiotagger.audio.AudioFile;
+import org.jaudiotagger.audio.AudioFileIO;
+import org.jaudiotagger.tag.FieldKey;
+import org.jaudiotagger.tag.Tag;
+import org.jaudiotagger.tag.TagOptionSingleton;
+
+import java.io.File;
 import java.io.FileDescriptor;
 import java.util.List;
 import java.util.UUID;
@@ -138,7 +149,7 @@ public class Util {
             if (stream != null)
                 return BitmapFactory.decodeByteArray(stream, 0, stream.length);
             else
-                return BitmapFactory.decodeResource(Resources.getSystem(), R.drawable.canv2);
+                return BitmapFactory.decodeResource(Resources.getSystem(), R.drawable.default_album_art_500);
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -275,7 +286,7 @@ public class Util {
     }
 
     public static void showAd(String id, Context context){
-        final InterstitialAd ad = new InterstitialAd(context);
+/*        final InterstitialAd ad = new InterstitialAd(context);
         ad.setAdUnitId(id);
         AdRequest adRequest = new  AdRequest.Builder()
                 .addTestDevice(Library.TEST_DEVICE_ID)
@@ -297,8 +308,51 @@ public class Util {
             public void onAdFailedToLoad(int errorCode) {
 
             }
-        });
+        });*/
 
+    }
+
+    public static String getLyrics(String filename){
+        String EMPTY = "No embedded lyrics found!";
+        File file = new File(filename);
+        if(file.exists()){
+            try {
+                TagOptionSingleton.getInstance().setAndroid(true);
+                AudioFile f = AudioFileIO.read(file);
+                Tag newTag = f.getTag();
+                String lyrics = newTag.getFirst(FieldKey.LYRICS);
+                if(lyrics.trim().isEmpty())
+                    return EMPTY;
+                return lyrics.trim();
+            }catch (Exception e){
+                Crashlytics.log(e.getMessage());
+                return EMPTY;
+            }catch (NoClassDefFoundError e){
+                Crashlytics.log(e.getMessage());
+                return EMPTY;
+            }
+        }
+        return EMPTY;
+    }
+
+    public static void showLyrics(final Context context, final Song reference){
+        try {
+            String lyrics = getLyrics(reference.location);
+            AlertDialog dialog = new AlertDialog.Builder(context)
+                    .setTitle("Lyrics")
+                    .setMessage(lyrics)
+                    .setPositiveButton("Edit", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Navigate.to(context, LyricsActivity.class, LyricsActivity.TAGGER_EXTRA, reference);
+                        }
+                    })
+                    .setNegativeButton("Back", null)
+                    .show();
+            Themes.themeAlertDialog(dialog);
+        }catch (Exception e){
+
+        }
     }
 
 

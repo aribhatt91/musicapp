@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.optimus.music.player.onix"
     android:installLocation="auto"
-    android:versionCode="22"
-    android:versionName="1.2.0">
+    android:versionCode="29"
+    android:versionName="1.2.5">
 
     <uses-sdk android:minSdkVersion="16" />
 
@@ -51,7 +51,21 @@
         <activity
             android:name=".LibraryActivity"
             android:label="@string/app_name"
-            android:windowSoftInputMode="adjustPan|adjustNothing" />
+            android:launchMode="singleTask"
+            android:windowSoftInputMode="adjustPan|adjustNothing">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:scheme="file" />
+                <data android:scheme="content" />
+                <data android:mimeType="audio/*" />
+                <data android:mimeType="application/ogg" />
+                <data android:mimeType="application/x-ogg" />
+                <data android:mimeType="application/itunes" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".DetailScreens.AlbumDetailDemo"
             android:label="@string/title_activity_album_detail_demo"
@@ -136,7 +150,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity-alias>
-        <activity-alias
+<!--        <activity-alias
             android:name=".PlayWithOnix"
             android:label="@string/app_name"
             android:targetActivity=".LibraryActivity">
@@ -152,7 +166,7 @@
                 <data android:mimeType="application/x-ogg" />
                 <data android:mimeType="application/itunes" />
             </intent-filter>
-        </activity-alias>
+        </activity-alias>-->
 
         <activity
             android:name=".EqualizerActivity.EqualizerActivity"

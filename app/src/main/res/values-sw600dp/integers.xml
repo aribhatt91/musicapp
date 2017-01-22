@@ -2,7 +2,7 @@
 <resources>
     <integer name="jb_num_cols">3</integer>
     <integer name="system_ui_modes_cols">3</integer>
-    <integer name="genre_num_cols">2</integer>
+    <integer name="genre_num_cols">3</integer>
 
 
 </resources>

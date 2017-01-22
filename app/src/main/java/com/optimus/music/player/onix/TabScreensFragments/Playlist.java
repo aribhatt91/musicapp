@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.optimus.music.player.onix.Common.Library;
+import com.optimus.music.player.onix.LibraryActivity;
 import com.optimus.music.player.onix.R;
 import com.optimus.music.player.onix.RecyclerViewUtils.ViewHolders.Misc.GridSpacingItemDecoration;
 import com.optimus.music.player.onix.RecyclerViewUtils.ViewHolders.PlaylistViewHolder;
@@ -66,11 +67,11 @@ public class Playlist extends Fragment  {
                 super.onScrollStateChanged(recyclerView, newState);
                 if (fab != null) {
                     if (newState == RecyclerView.SCROLL_STATE_IDLE) {
-                        if (!fab.isShown()) {
+                        if (!fab.isShown() && LibraryActivity.showFab) {
                             fab.show();
                         }
                     } else {
-                        if (fab.isShown()) {
+                        if (LibraryActivity.showFab && fab.isShown()) {
                             fab.hide();
                         }
                     }
@@ -124,7 +125,7 @@ public class Playlist extends Fragment  {
             */
         GridLayoutManager layoutManager = new GridLayoutManager(getActivity(), numColumns);
         list.setLayoutManager(layoutManager);
-        list.addItemDecoration(new GridSpacingItemDecoration(numColumns, (int) getResources().getDimension(R.dimen.grid_margin), true));
+        list.addItemDecoration(new GridSpacingItemDecoration(1, (int) getResources().getDimension(R.dimen.gallery_grid_space), true));
 
         list.setAdapter(mAdapter);
 

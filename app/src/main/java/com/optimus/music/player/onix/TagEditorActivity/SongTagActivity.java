@@ -181,6 +181,7 @@ public class SongTagActivity extends AppCompatActivity {
                                             @Override
                                             public void onClick(DialogInterface dialogInterface, int i) {
                                                 //finish();
+                                                Library.scanAll(SongTagActivity.this);
                                                 Navigate.home(SongTagActivity.this);
                                             }
                                         })
@@ -247,15 +248,28 @@ public class SongTagActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        if(flag){
+            Library.scanAll(this);
+            Navigate.home(this);
+        }else{
+            finish();
+        }
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                if(flag)
+                if(flag) {
+                    Library.scanAll(this);
                     Navigate.home(this);
-                else
+                }
+                else {
                     finish();
+                }
                 return true;
             case R.id.action_edit:
                 Navigate.to(SongTagActivity.this, LyricsActivity.class,LyricsActivity.TAGGER_EXTRA, reference);

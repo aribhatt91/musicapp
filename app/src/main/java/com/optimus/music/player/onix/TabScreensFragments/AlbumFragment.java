@@ -24,6 +24,7 @@ import com.bumptech.glide.Glide;
 import com.optimus.music.player.onix.Common.Instances.Album;
 import com.optimus.music.player.onix.Common.Library;
 import com.optimus.music.player.onix.DetailScreens.AlbumDetailDemo;
+import com.optimus.music.player.onix.LibraryActivity;
 import com.optimus.music.player.onix.R;
 import com.optimus.music.player.onix.RecyclerViewUtils.ViewHolders.AlbumViewHolder;
 import com.optimus.music.player.onix.RecyclerViewUtils.ViewHolders.EmptyViewHolder;
@@ -44,8 +45,8 @@ public class AlbumFragment extends Fragment {
     private int position;
     private RecyclerView list;
     private static final String ARG_PARAM1 = "position";
-    boolean isFlat;
-    int span;
+    boolean isFlat, colorAlbum;
+    int span, alSize;
 
     int dimension;
 
@@ -75,7 +76,7 @@ public class AlbumFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.gallery_grid, container, false);
         final View bg = view.findViewById(R.id.bg);
@@ -84,17 +85,18 @@ public class AlbumFragment extends Fragment {
         list = (RecyclerView) view.findViewById(R.id.list);
         context = getActivity();
 
+
         list.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
                 if (fab != null) {
                     if (newState == RecyclerView.SCROLL_STATE_IDLE) {
-                        if (!fab.isShown()) {
+                        if (!fab.isShown() && LibraryActivity.showFab) {
                             fab.show();
                         }
                     } else {
-                        if (fab.isShown()) {
+                        if (LibraryActivity.showFab && fab.isShown()) {
                             fab.hide();
                         }
                     }
@@ -133,21 +135,38 @@ public class AlbumFragment extends Fragment {
         });
 
 
+        dimension = (int) getResources().getDimension(R.dimen.gallery_grid_space);
+        list.addItemDecoration(new GridSpacingItemDecoration(1, dimension, true));
+
+
+        addListAdapter();
+
+
+        return view;
+    }
+
+    private void addListAdapter(){
+        colorAlbum = Prefs.colourAlbum(getActivity());
+
 
         if(Prefs.getAlbumsize(getActivity())==0){
+            alSize = 0;
             span = getResources().getInteger(R.integer.system_ui_modes_cols);
             dimension = (int) getResources().getDimension(R.dimen.grid_margin);
             isFlat = false;
         }else if(Prefs.getAlbumsize(getActivity())==1){
+            alSize = 1;
             span = 1;
             dimension = (int) getResources().getDimension(R.dimen.jb_grid_space);
             isFlat = true;
 
         }else if(Prefs.getAlbumsize(getActivity())==2){
+            alSize = 2;
             span = 2;
             dimension = (int) getResources().getDimension(R.dimen.grid_margin);
             isFlat = false;
         }else if(Prefs.getAlbumsize(getActivity())==3){
+            alSize = 3;
             span = 3;
             dimension = (int) getResources().getDimension(R.dimen.jb_grid_space);
             isFlat = false;
@@ -161,8 +180,7 @@ public class AlbumFragment extends Fragment {
         albums = Library.getAlbums();
         mAdapter = new AlbumsFragmentAdapter();
         final int numColumns = span;
-        if((albums.size()/numColumns)<3)
-            shadow.setAlpha(0.0f);
+
         GridLayoutManager layoutManager = new GridLayoutManager(getActivity(), numColumns);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         layoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
@@ -172,16 +190,28 @@ public class AlbumFragment extends Fragment {
             }
         });
 
-        list.setLayoutManager(layoutManager);
-        list.addItemDecoration(new GridSpacingItemDecoration(numColumns, dimension, true));
-        list.setAdapter(mAdapter);
-        return view;
-    }
 
+        list.setLayoutManager(layoutManager);
+        //list.removeItemDecoration(new GridSpacingItemDecoration(numColumns, dimension, true));
+        list.setAdapter(mAdapter);
+
+
+    }
 
     @Override
     public void onResume() {
         super.onResume();
+        if(alSize != Prefs.getAlbumsize(getActivity())
+                || colorAlbum != Prefs.colourAlbum(getActivity())) {
+            addListAdapter();
+            try {
+                final View bg = getView().findViewById(R.id.bg);
+                bg.setTranslationY(0.0f);
+            }catch (Exception e){
+
+            }
+
+        }
         Library.addAlbumListener(mAdapter);
         Library.addRefreshListener(mAdapter);
         mAdapter.onLibraryRefreshed();

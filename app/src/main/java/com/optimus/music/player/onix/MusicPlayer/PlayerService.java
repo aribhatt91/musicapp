@@ -15,6 +15,7 @@ import android.os.IBinder;
 import android.os.RemoteException;
 import android.support.annotation.IdRes;
 import android.support.v4.app.NotificationCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.media.session.MediaButtonReceiver;
 import android.telephony.TelephonyManager;
 import android.util.Log;
@@ -26,6 +27,7 @@ import com.crashlytics.android.Crashlytics;
 import com.optimus.music.player.onix.BuildConfig;
 import com.optimus.music.player.onix.Common.Instances.Song;
 
+import com.optimus.music.player.onix.Common.Library;
 import com.optimus.music.player.onix.IPlayerService;
 import com.optimus.music.player.onix.LibraryActivity;
 import com.optimus.music.player.onix.R;
@@ -83,6 +85,8 @@ public class PlayerService extends Service implements MusicPlayer.OnPlaybackChan
      */
     private MusicPlayer musicPlayer;
     private boolean finished = false; // Don't attempt to release resources more than once
+
+    public static boolean sleepTimer = false;
 
     AppWidgetSmall appWidgetSmall = AppWidgetSmall.getInstance();
     AppWidgetJumbo appWidgetJumbo = AppWidgetJumbo.getInstance();
@@ -222,19 +226,34 @@ public class PlayerService extends Service implements MusicPlayer.OnPlaybackChan
                     R.drawable.ic_pause_white_24dp);
         }
 
+        Intent intent = new Intent(this, LibraryActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+
+        int col = 0xffffff;
+
+        try {
+
+            if (Library.colorCache.containsKey(musicPlayer.getNowPlaying().albumId)) {
+                col = Library.colorCache.get(musicPlayer.getNowPlaying().albumId)[0];
+            }
+        }catch (Exception e){
+
+        }
+
         // Build the notification
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
                 .setSmallIcon(
                         (musicPlayer.isPlaying() || musicPlayer.isPreparing())
                                 ? R.drawable.small_icon
                                 : R.drawable.small_icon)
+                .setColor(col)
                 .setOnlyAlertOnce(true)
                 .setOngoing(true)
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
                 .setCategory(NotificationCompat.CATEGORY_TRANSPORT)
                 .setContentIntent(PendingIntent.getActivity(this, 0,
-                        new Intent(this, LibraryActivity.class),
+                        intent,
                         PendingIntent.FLAG_UPDATE_CURRENT));
 
         Notification notification = builder.build();

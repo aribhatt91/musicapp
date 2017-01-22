@@ -97,9 +97,13 @@ public class AllTracksByArtist extends NowPlayingActivity{
 
 
         Intent i = getIntent();
-        b = i.getExtras();
-        id = b.getLong("artist_id");
-        artist = b.getString("name");
+        try {
+            b = i.getExtras();
+            id = b.getLong("artist_id");
+            artist = b.getString("name");
+        }catch (Exception e){
+
+        }
         arguments = new String[]{String.valueOf(id)};
         flag =-1;
 
@@ -124,13 +128,13 @@ public class AllTracksByArtist extends NowPlayingActivity{
 
         ImageView canvas = (ImageView) findViewById(R.id.canvas_large);
         try{
-            canvas.setImageResource(R.drawable.canv2);
+            canvas.setImageResource(R.drawable.default_album_art_500);
 
         }catch (Exception e){
 
         }
         catch (OutOfMemoryError e) {
-            Glide.with(this).load(R.drawable.canv2).into(canvas);
+            Glide.with(this).load(R.drawable.default_album_art_500).into(canvas);
         }
 
 
@@ -199,7 +203,7 @@ public class AllTracksByArtist extends NowPlayingActivity{
                 super.onPostExecute(aVoid);
                 if(reference!=null){
                     url = reference.getImageURL(ImageList.SIZE_MEGA);
-                    if(url!=null) {
+                    if(url!=null && AllTracksByArtist.this!=null) {
 
                         Glide.with(AllTracksByArtist.this).load(url)
                                 .diskCacheStrategy(DiskCacheStrategy.RESULT)
@@ -234,7 +238,7 @@ public class AllTracksByArtist extends NowPlayingActivity{
         tabLayout.setTabMode(TabLayout.MODE_FIXED);
         tabLayout.setTabTextColors(0x66FFFFFF,0xFFFFFFFF);
 
-        setPaddingStyle();
+        //setPaddingStyle();
 
     }
 
@@ -260,6 +264,7 @@ public class AllTracksByArtist extends NowPlayingActivity{
 
     }
 
+/*
     private void setPaddingStyle(){
         if(PlayerController.getNowPlaying()==null){
             main.setPadding(0,0,0,0);
@@ -269,12 +274,13 @@ public class AllTracksByArtist extends NowPlayingActivity{
             }
         }
     }
+*/
 
 
     @Override
     public void onUpdate() {
         super.onUpdate();
-        setPaddingStyle();
+        //setPaddingStyle();
     }
 
     @Override

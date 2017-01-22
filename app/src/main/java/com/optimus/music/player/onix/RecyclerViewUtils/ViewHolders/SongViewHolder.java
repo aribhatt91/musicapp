@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.content.ContentUris;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -14,6 +15,7 @@ import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
@@ -43,6 +45,8 @@ import com.optimus.music.player.onix.Common.Instances.Song;
 import com.optimus.music.player.onix.RecyclerViewUtils.ViewHolders.Misc.Navigate;
 import com.optimus.music.player.onix.SettingsActivity.Prefs;
 
+import com.optimus.music.player.onix.SettingsActivity.Themes;
+import com.optimus.music.player.onix.TagEditorActivity.LyricsActivity;
 import com.optimus.music.player.onix.TagEditorActivity.SongTagActivity;
 import com.optimus.music.player.onix.Utility.PlaylistDialog;
 import com.optimus.music.player.onix.WhatsHotActivity.VideoLibrary;
@@ -232,7 +236,11 @@ public class SongViewHolder extends RecyclerView.ViewHolder implements View.OnCl
                 Navigate.to(context, SongTagActivity.class,
                         SongTagActivity.TAGGER_EXTRA, reference);
                 return true;
-            case 11:// delete
+            case 11:
+                Util.showLyrics(context,reference);
+                return true;
+
+            case 12:// delete
                 Library.deleteSongDialog(itemView.getContext(), reference, true);
                 return true;
 

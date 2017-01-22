@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="gallery_grid_margin">24dp</dimen>
+    <dimen name="navdrawer_width">300dp</dimen>
+
+    <dimen name="gallery_grid_margin">48dp</dimen>
     <dimen name="jb_recycler_margin">30dp</dimen>
 
     <dimen name="recycler_list_left_margin">10dp</dimen>

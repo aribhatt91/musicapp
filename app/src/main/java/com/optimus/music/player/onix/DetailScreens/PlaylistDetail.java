@@ -69,6 +69,7 @@ import com.optimus.music.player.onix.SettingsActivity.Themes;
 import com.optimus.music.player.onix.Utility.HalfSquareImageView;
 import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -118,10 +119,14 @@ public class PlaylistDetail extends NowPlayingActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_four_square);
 
+        try {
 
-        reference = getIntent().getParcelableExtra(PLAYLIST_EXTRA);
-        playlistId = reference.playlistId;
-        name = reference.playlistName;
+            reference = getIntent().getParcelableExtra(PLAYLIST_EXTRA);
+            playlistId = reference.playlistId;
+            name = reference.playlistName;
+        }catch (Exception e){
+
+        }
 
 
 
@@ -179,14 +184,11 @@ public class PlaylistDetail extends NowPlayingActivity implements
 
         if( cur!=null && cur.getCount()>0) {
             Set<Long> set = new LinkedHashSet<Long>();
+            Set<String> exFol = Prefs.getExcludedFolders(this);
 
             for (int im = 0; im < cur.getCount(); im++) {
                 cur.moveToPosition(im);
-                long ids = cur.getLong(cur.getColumnIndexOrThrow(MediaStore.Audio.Media.ALBUM_ID));
-                if (set.size() < 4) {
-                    set.add(ids);
-                }
-                songEntries.add(new Song(
+                Song s = new Song(
                         cur.getString(cur.getColumnIndex(MediaStore.Audio.Playlists.Members.TITLE)),
                         cur.getLong(cur.getColumnIndex(MediaStore.Audio.Playlists.Members.AUDIO_ID)),
                         cur.getString(cur.getColumnIndex(MediaStore.Audio.Playlists.Members.ARTIST)),
@@ -196,7 +198,18 @@ public class PlaylistDetail extends NowPlayingActivity implements
                         cur.getInt(cur.getColumnIndex(MediaStore.Audio.Playlists.Members.YEAR)),
                         cur.getInt(cur.getColumnIndex(MediaStore.Audio.Playlists.Members.DATE_ADDED)),
                         cur.getLong(cur.getColumnIndex(MediaStore.Audio.Playlists.Members.ALBUM_ID)),
-                        cur.getLong(cur.getColumnIndex(MediaStore.Audio.Playlists.Members.ARTIST_ID))));
+                        cur.getLong(cur.getColumnIndex(MediaStore.Audio.Playlists.Members.ARTIST_ID)));
+                File f = new File(s.location);
+                String path = "";
+                if(f.exists()){
+                    path = f.getParent();
+                }
+                if(!exFol.contains(path)){
+                    songEntries.add(s);
+                    if (set.size() < 4) {
+                        set.add(s.albumId);
+                    }
+                }
             }
 
 
@@ -244,7 +257,7 @@ public class PlaylistDetail extends NowPlayingActivity implements
             });
 
             //list.setAdapter(adapter);
-            if (cur.getCount() > 0) {
+            if (cur.getCount() > 0 && songEntries.size()>0) {
 
 
                 long album_id = songEntries.get(0).albumId;
@@ -571,68 +584,83 @@ public class PlaylistDetail extends NowPlayingActivity implements
 
         switch (item.getItemId()) {
             case R.id.action_sort_random:
-                if(System.currentTimeMillis()%10==0) {
-                    Util.showAd(getResources().getString(R.string.playlist_inter), this);
-                }
+                if(songEntries!=null && !songEntries.isEmpty()) {
+                    if (System.currentTimeMillis() % 10 == 0) {
+                        Util.showAd(getResources().getString(R.string.playlist_inter), this);
+                    }
 
-                Collections.shuffle(songEntries);
-                result = getResources().getString(R.string.message_sorted_playlist_random);
+                    Collections.shuffle(songEntries);
+                    result = getResources().getString(R.string.message_sorted_playlist_random);
+                }
                 break;
             case R.id.action_sort_name:
-                if(System.currentTimeMillis()%12==0) {
-                    Util.showAd(getResources().getString(R.string.playlist_inter), this);
-                }
+                if(songEntries!=null && !songEntries.isEmpty()) {
+                    if (System.currentTimeMillis() % 12 == 0) {
+                        Util.showAd(getResources().getString(R.string.playlist_inter), this);
+                    }
 
-                Collections.sort(songEntries);
-                result = getResources().getString(R.string.message_sorted_playlist_name);
+                    Collections.sort(songEntries);
+                    result = getResources().getString(R.string.message_sorted_playlist_name);
+                }
                 break;
             case R.id.action_sort_artist:
-                Collections.sort(songEntries, Song.ARTIST_COMPARATOR);
-                result = getResources().getString(R.string.message_sorted_playlist_artist);
+                if(songEntries!=null && !songEntries.isEmpty()) {
+                    Collections.sort(songEntries, Song.ARTIST_COMPARATOR);
+                    result = getResources().getString(R.string.message_sorted_playlist_artist);
+                }
                 break;
             case R.id.action_sort_album:
-                Collections.sort(songEntries, Song.ALBUM_COMPARATOR);
-                result = getResources().getString(R.string.message_sorted_playlist_album);
+                if(songEntries!=null && !songEntries.isEmpty()) {
+                    Collections.sort(songEntries, Song.ALBUM_COMPARATOR);
+                    result = getResources().getString(R.string.message_sorted_playlist_album);
+                }
                 break;
             case R.id.action_sort_play:
-                Collections.sort(songEntries, Song.PLAY_COUNT_COMPARATOR);
-                result = getResources().getString(R.string.message_sorted_playlist_play);
+                if(songEntries!=null && !songEntries.isEmpty()) {
+                    Collections.sort(songEntries, Song.PLAY_COUNT_COMPARATOR);
+                    result = getResources().getString(R.string.message_sorted_playlist_play);
+                }
                 break;
             case R.id.action_sort_date_added:
-                if(System.currentTimeMillis()%12==0) {
-                    Util.showAd(getResources().getString(R.string.playlist_inter), this);
-                }
+                if(songEntries!=null && !songEntries.isEmpty()) {
+                    if (System.currentTimeMillis() % 12 == 0) {
+                        Util.showAd(getResources().getString(R.string.playlist_inter), this);
+                    }
 
-                Collections.sort(songEntries, Song.DATE_ADDED_COMPARATOR);
-                result = getResources().getString(R.string.message_sorted_playlist_date_added);
+                    Collections.sort(songEntries, Song.DATE_ADDED_COMPARATOR);
+                    result = getResources().getString(R.string.message_sorted_playlist_date_added);
+                }
                 break;
             default:
                 break;
         }
 
-        Library.editPlaylist(this, reference, songEntries);
+
+        if(songEntries!=null && !songEntries.isEmpty()) {
+            Library.editPlaylist(this, reference, songEntries);
 
 
-        madapter.notifyDataSetChanged();
+            madapter.notifyDataSetChanged();
 
-        Snackbar
-                .make(
-        findViewById(R.id.list),
-        String.format(result, reference),
-        Snackbar.LENGTH_LONG)
-                .setAction(
-                getResources().getString(R.string.action_undo),
-        new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                songEntries.clear();
-                songEntries.addAll(unsortedData);
-                Library.editPlaylist(
-                        PlaylistDetail.this, reference, unsortedData);
-                madapter.notifyDataSetChanged();
-            }
-        })
-                .show();
+            Snackbar
+                    .make(
+                            findViewById(R.id.list),
+                            String.format(result, reference),
+                            Snackbar.LENGTH_LONG)
+                    .setAction(
+                            getResources().getString(R.string.action_undo),
+                            new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    songEntries.clear();
+                                    songEntries.addAll(unsortedData);
+                                    Library.editPlaylist(
+                                            PlaylistDetail.this, reference, unsortedData);
+                                    madapter.notifyDataSetChanged();
+                                }
+                            })
+                    .show();
+        }
         return true;
     }
 

@@ -17,14 +17,14 @@ repositories {
 
 android {
     compileSdkVersion 24
-    buildToolsVersion "24.0.1"
+    buildToolsVersion '24.0.3'
 
     defaultConfig {
         applicationId "com.optimus.music.player.onix"
         minSdkVersion 16
         targetSdkVersion 24
-        versionCode 22
-        versionName "1.2.0"
+        versionCode 30
+        versionName "1.2.6 Beta"
         //renderscriptTargetApi 19
         //renderscriptSupportModeEnabled true
         multiDexEnabled true

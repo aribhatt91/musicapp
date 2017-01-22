@@ -3,6 +3,7 @@ package com.optimus.music.player.onix.SettingsActivity;
 import android.content.DialogInterface;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.MultiSelectListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceScreen;
@@ -72,6 +73,7 @@ public class SettingsActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
+                Library.scanAll(this);
                 Navigate.home(this);
                 return true;
         }
@@ -81,7 +83,11 @@ public class SettingsActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        finish();
+        Cache.deleteCache(this);
+        Library.genMap.clear();
+        Library.colorCache.clear();
+        Library.scanAll(this);
+        Navigate.home(this);
     }
 
     public static class PrefFragment extends PreferenceFragment implements AdapterView.OnItemLongClickListener{
@@ -90,6 +96,24 @@ public class SettingsActivity extends AppCompatActivity {
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.prefs);
+            try {
+
+                MultiSelectListPreference listPreference = (MultiSelectListPreference) getPreferenceManager().findPreference("excludeFolders");
+                Library.parseAllMusicFolders();
+                if(Library.getFoldernames().length!=0) {
+                    listPreference.setEntries(
+                            //new String[]{"a", "b", "c"});
+                            Library.getFoldernames());
+                    listPreference.setEntryValues(
+                            //new String[]{"a", "b", "c"});
+                            Library.getFolderPaths());
+                }else{
+                    listPreference.setEnabled(false);
+                }
+            }catch (Exception e){
+
+            }
+
         }
 
         @Override
@@ -97,6 +121,8 @@ public class SettingsActivity extends AppCompatActivity {
             View view = super.onCreateView(inflater, container, savedInstanceState);
             if (view != null) {
                 ((ListView) view.findViewById(android.R.id.list)).setOnItemLongClickListener(this);
+
+
             }
             return view;
         }
@@ -108,6 +134,7 @@ public class SettingsActivity extends AppCompatActivity {
 
         @Override
         public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
+
             if(preference.getKey().equals(Prefs.CLEAR)){
                 AlertDialog dialog = new AlertDialog.Builder(getActivity())
                         .setTitle("Clear Cache?")

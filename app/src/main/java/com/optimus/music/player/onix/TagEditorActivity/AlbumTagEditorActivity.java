@@ -415,6 +415,7 @@ public class AlbumTagEditorActivity extends AppCompatActivity {
                                                 if(System.currentTimeMillis()%8==0) {
                                                     Util.showAd(getResources().getString(R.string.playlist_inter), AlbumTagEditorActivity.this);
                                                 }
+                                                Library.scanAll(AlbumTagEditorActivity.this);
                                                 Navigate.home(AlbumTagEditorActivity.this);
                                             }
                                         })
@@ -544,13 +545,27 @@ public class AlbumTagEditorActivity extends AppCompatActivity {
     }
 
     @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        if(flag){
+            Library.scanAll(this);
+            Navigate.home(this);
+        }else{
+            finish();
+        }
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                if(flag)
+                if(flag) {
+                    Library.scanAll(this);
                     Navigate.home(this);
-                else
+                }
+                else {
                     finish();
+                }
                 return true;
             case R.id.action_download:
 
@@ -702,11 +717,6 @@ public class AlbumTagEditorActivity extends AppCompatActivity {
             searchDialog();
         }
     }
-
-
-
-
-
 
 
 

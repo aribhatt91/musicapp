@@ -177,7 +177,7 @@ public class JukeBoxActivity extends NowPlayingActivity implements TimePickerDia
         GridLayoutManager gridLayoutManager = new GridLayoutManager(JukeBoxActivity.this, numColumns);
         gridLayoutManager.setSpanSizeLookup(spanSizeLookup);
         list.setLayoutManager(gridLayoutManager);
-        list.addItemDecoration(new GridSpacingItemDecoration(numColumns, (int) getResources().getDimension(R.dimen.jb_grid_space), true));
+        list.addItemDecoration(new GridSpacingItemDecoration(1, (int) getResources().getDimension(R.dimen.jb_grid_space), true));
 
         list.setAdapter(adapter);
 

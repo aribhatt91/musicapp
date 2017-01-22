@@ -86,6 +86,7 @@
     <dimen name="gallery_grid_margin">0dp</dimen>
 
     <dimen name="jb_grid_space">3dp</dimen>
+    <dimen name="gallery_grid_space">5dp</dimen>
     <dimen name="jb_recycler_margin">10dp</dimen>
 
     <dimen name="overlay">80dp</dimen>

@@ -23,6 +23,7 @@ import android.widget.Toast;
 import com.optimus.music.player.onix.Common.Instances.Artist;
 import com.optimus.music.player.onix.Common.Library;
 import com.optimus.music.player.onix.DetailScreens.AllTracksByArtist;
+import com.optimus.music.player.onix.LibraryActivity;
 import com.optimus.music.player.onix.R;
 import com.optimus.music.player.onix.RecyclerViewUtils.ViewHolders.ArtistViewHolder;
 import com.optimus.music.player.onix.RecyclerViewUtils.ViewHolders.EmptyViewHolder;
@@ -111,11 +112,11 @@ public class Artists extends Fragment {
                 super.onScrollStateChanged(recyclerView, newState);
                 if (fab != null) {
                     if (newState == RecyclerView.SCROLL_STATE_IDLE) {
-                        if (!fab.isShown()) {
+                        if (!fab.isShown() && LibraryActivity.showFab) {
                             fab.show();
                         }
                     } else {
-                        if (fab.isShown()) {
+                        if (LibraryActivity.showFab && fab.isShown()) {
                             fab.hide();
                         }
                     }

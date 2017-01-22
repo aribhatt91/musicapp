@@ -6,6 +6,8 @@
     <dimen name="list_pmargin">40dp</dimen>
     <dimen name="list_pmargin_neg">-40dp</dimen>
     <dimen name="grid_margin">10dp</dimen>
+    <dimen name="gallery_grid_space">3dp</dimen>
+
 
     <dimen name="fab_margin_">56dp</dimen>
     <dimen name="rlist_margin">20dp</dimen>

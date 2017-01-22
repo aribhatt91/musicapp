@@ -2,7 +2,9 @@ package com.optimus.music.player.onix.SplashScreen;
 
 import android.content.Intent;
 import android.graphics.PorterDuff;
+import android.os.AsyncTask;
 import android.os.Handler;
+import android.support.v4.content.AsyncTaskLoader;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,6 +12,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
+import com.optimus.music.player.onix.Common.Library;
 import com.optimus.music.player.onix.LibraryActivity;
 import com.optimus.music.player.onix.R;
 import com.optimus.music.player.onix.SettingsActivity.Themes;
@@ -73,12 +76,30 @@ public class SplashScreenActivity extends AppCompatActivity {
 
         }
 
-        new Handler().postDelayed(new Runnable() {
+        (new AsyncTask<Void, Void, Void>(){
+            @Override
+            protected Void doInBackground(Void... params) {
+                Library.scanAll(SplashScreenActivity.this);
+                return null;
+            }
 
-            /*
+            @Override
+            protected void onPostExecute(Void aVoid) {
+                super.onPostExecute(aVoid);
+                Intent i = new Intent(SplashScreenActivity.this, LibraryActivity.class);
+                startActivity(i);
+
+                // close this activity
+                finish();
+            }
+        }).execute();
+
+/*        new Handler().postDelayed(new Runnable() {
+
+            *//*
              * Showing splash screen with a timer. This will be useful when you
              * want to show case your app logo / company
-             */
+             *//*
 
             @Override
             public void run() {
@@ -90,6 +111,6 @@ public class SplashScreenActivity extends AppCompatActivity {
                 // close this activity
                 finish();
             }
-        }, SPLASH_TIME_OUT);
+        }, SPLASH_TIME_OUT);*/
     }
 }

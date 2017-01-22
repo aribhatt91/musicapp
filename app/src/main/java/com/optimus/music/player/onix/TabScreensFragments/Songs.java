@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 
 import com.optimus.music.player.onix.Common.Instances.Song;
 import com.optimus.music.player.onix.Common.Library;
+import com.optimus.music.player.onix.LibraryActivity;
 import com.optimus.music.player.onix.R;
 import com.optimus.music.player.onix.RecyclerViewUtils.ViewHolders.EmptyViewHolder;
 import com.optimus.music.player.onix.RecyclerViewUtils.ViewHolders.EnhancedAdapters.EmptyState;
@@ -91,15 +92,13 @@ public class Songs extends Fragment {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
-                if (fab != null) {
-                    if (newState == RecyclerView.SCROLL_STATE_IDLE) {
-                        if (!fab.isShown()) {
-                            fab.show();
-                        }
-                    } else {
-                        if (fab.isShown()) {
-                            fab.hide();
-                        }
+                if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+                    if (!fab.isShown() && LibraryActivity.showFab) {
+                        fab.show();
+                    }
+                } else {
+                    if (LibraryActivity.showFab && fab.isShown()) {
+                        fab.hide();
                     }
                 }
             }

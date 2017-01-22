@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 
 import com.optimus.music.player.onix.Common.ConnectionDetector;
 import com.optimus.music.player.onix.Common.Library;
+import com.optimus.music.player.onix.LibraryActivity;
 import com.optimus.music.player.onix.R;
 import com.optimus.music.player.onix.RecyclerViewUtils.ViewHolders.EmptyViewHolder;
 import com.optimus.music.player.onix.RecyclerViewUtils.ViewHolders.GenreViewHolder;
@@ -64,11 +65,11 @@ public class Genre extends Fragment  {
                 super.onScrollStateChanged(recyclerView, newState);
                 if (fab != null) {
                     if (newState == RecyclerView.SCROLL_STATE_IDLE) {
-                        if (!fab.isShown()) {
+                        if (!fab.isShown() && LibraryActivity.showFab) {
                             fab.show();
                         }
                     } else {
-                        if (fab.isShown()) {
+                        if (LibraryActivity.showFab && fab.isShown()) {
                             fab.hide();
                         }
                     }
@@ -135,11 +136,46 @@ public class Genre extends Fragment  {
         });
         list.setLayoutManager(layoutManager);
 
-        list.addItemDecoration(new GridSpacingItemDecoration(numColumns, (int) getResources().getDimension(R.dimen.grid_margin), true));
+        list.addItemDecoration(new GridSpacingItemDecoration(1, (int) getResources().getDimension(R.dimen.gallery_grid_space), true));
 
         list.setAdapter(mAdapter);
 
         return myFragmentView;
+    }
+
+    public void addAdapterToList(){
+
+        int span, dim;
+
+        if(Prefs.getGenreStyle(getActivity())==1){
+            isGrid = true;
+            span = getResources().getInteger(R.integer.genre_num_cols);
+            dim = (int) getResources().getDimension(R.dimen.grid_margin);
+        }else{
+            isGrid = false;
+            span = getResources().getInteger(R.integer.genre_list_num_cols);;
+            dim = (int) getResources().getDimension(R.dimen.jb_grid_space);
+        }
+
+
+
+        final int numColumns = span;
+
+        GridLayoutManager layoutManager = new GridLayoutManager(getActivity(), numColumns);
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        layoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+            @Override
+            public int getSpanSize(int position) {
+                return (mAdapter.getItemViewType(position) == GenresAdapter.EMPTY
+                        || mAdapter.getItemViewType(position) == GenresAdapter.ADVIEW) ? numColumns : 1;
+            }
+        });
+        list.setLayoutManager(layoutManager);
+
+        list.addItemDecoration(new GridSpacingItemDecoration(1, (int) getResources().getDimension(R.dimen.gallery_grid_space), true));
+
+        list.setAdapter(mAdapter);
+
     }
 
 
@@ -170,7 +206,7 @@ public class Genre extends Fragment  {
         public GenresAdapter(){
             ConnectionDetector cd = new ConnectionDetector(getActivity());
 
-            isFBInstalled = cd.isConnectingToInternet(); //Util.isPackageInstalled(getActivity());
+            isFBInstalled = false;//cd.isConnectingToInternet(); //Util.isPackageInstalled(getActivity());
         }
 
         @Override

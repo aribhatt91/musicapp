@@ -123,7 +123,7 @@ public class AlbumFragment extends Fragment {
             grid.setLayoutManager(layoutManager);
 
             // Add item decorations
-            grid.addItemDecoration(new GridSpacingItemDecoration(numColumns, (int) getResources().getDimension(R.dimen.grid_margin),  true));
+            grid.addItemDecoration(new GridSpacingItemDecoration(1, (int) getResources().getDimension(R.dimen.gallery_grid_space),  true));
         }
 
 

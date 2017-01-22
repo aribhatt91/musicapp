@@ -98,12 +98,17 @@ public class AlbumDetailDemo extends NowPlayingActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_album);
         context = this;
-        Bundle b = getIntent().getExtras();
-        //reference = getIntent().getParcelableExtra(ALBUM_EXTRA);
-        id = b.getLong("album_id");
+        try {
+            Bundle b = getIntent().getExtras();
+            //reference = getIntent().getParcelableExtra(ALBUM_EXTRA);
+            id = b.getLong("album_id");
+            //albumName = reference.getAlbumName();
+            //detail = reference.artistName;
+        }catch (Exception e){
+
+        }
         String path = ""; //= reference.artUri;
-        //albumName = reference.getAlbumName();
-        //detail = reference.artistName;
+
 
         jb = new JukeBoxDBHelper(this);
 
@@ -175,7 +180,7 @@ public class AlbumDetailDemo extends NowPlayingActivity{
         {
             colourElements(art, Prefs.colourAlbum(this));
         }*/
-        int[] cols = Library.colorCache.get(reference);
+        int[] cols = Library.colorCache.get(reference.albumId);
 
         if(cols!=null && cols.length==3) {
             frameCol = cols[0];
@@ -404,7 +409,7 @@ public class AlbumDetailDemo extends NowPlayingActivity{
                         frameCol = frameColor;
                         textCol = swatch.getTitleTextColor();
                         subTextCol = swatch.getBodyTextColor();
-                        Library.colorCache.put(reference, new int[]{frameCol, textCol, subTextCol});
+                        Library.colorCache.put(reference.albumId, new int[]{frameCol, textCol, subTextCol});
                         try {
                             collapsingToolbarLayout.setBackgroundColor(frameColor);
                             collapsingToolbarLayout.setContentScrimColor(frameColor);
@@ -622,7 +627,7 @@ public class AlbumDetailDemo extends NowPlayingActivity{
             if(Prefs.colourAlbum(itemView.getContext())){
                 generatePalette(art, true);
             }*/
-            int[] cols = Library.colorCache.get(reference);
+            int[] cols = Library.colorCache.get(reference.albumId);
 
             if(cols!=null && cols.length==3) {
                 frameCol = cols[0];
@@ -677,7 +682,7 @@ public class AlbumDetailDemo extends NowPlayingActivity{
                         if (swatch != null && frameColor != Color.TRANSPARENT) {
                             titleColor = swatch.getTitleTextColor();
                             detailColor = swatch.getBodyTextColor();
-                            Library.colorCache.put(reference, new int[]{frameColor, titleColor, detailColor});
+                            Library.colorCache.put(reference.albumId, new int[]{frameColor, titleColor, detailColor});
                         } else {
                             frameColor = defaultFrameColor;
                             titleColor = defaultTitleColor;

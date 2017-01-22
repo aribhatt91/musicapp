@@ -309,7 +309,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:layout_alignParentTop="true"
-                android:background="@color/white"
+                android:background="@color/translucent"
                 />
 
             <ImageView
@@ -320,7 +320,7 @@
                 android:layout_centerVertical="true"
                 android:layout_gravity="right"
                 android:scaleType="centerInside"
-                android:tint="@color/lightTextSecondary"
+                android:tint="@color/white"
                 android:src="@drawable/ic_volume_up_white_24dp"
                 />
 
@@ -347,7 +347,7 @@
                 android:layout_toEndOf="@+id/panelButton"
                 android:layout_toLeftOf="@id/addButton"
                 android:layout_toStartOf="@+id/addButton"
-                android:textColor="@color/lightTextSecondary"
+                android:textColor="@color/white"
                 android:layout_marginRight="20dp"
                 android:layout_marginLeft="20dp"
                 android:maxLines="1"

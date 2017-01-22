@@ -2,8 +2,10 @@ package com.optimus.music.player.onix.RecyclerViewUtils.ViewHolders;
 
 import android.content.ContentUris;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
@@ -20,9 +22,12 @@ import com.optimus.music.player.onix.Common.Library;
 import com.optimus.music.player.onix.JukeBoxActivity.JukeBoxDBHelper;
 import com.optimus.music.player.onix.MusicPlayer.NowPlayingActivity;
 import com.optimus.music.player.onix.MusicPlayer.PlayerController;
+import com.optimus.music.player.onix.MusicPlayer.Util;
 import com.optimus.music.player.onix.R;
 import com.optimus.music.player.onix.RecyclerViewUtils.ViewHolders.Misc.Navigate;
 import com.optimus.music.player.onix.SettingsActivity.Prefs;
+import com.optimus.music.player.onix.SettingsActivity.Themes;
+import com.optimus.music.player.onix.TagEditorActivity.LyricsActivity;
 import com.optimus.music.player.onix.TagEditorActivity.SongTagActivity;
 import com.optimus.music.player.onix.Utility.PlaylistDialog;
 import com.optimus.music.player.onix.WhatsHotActivity.VideoLibrary;
@@ -214,6 +219,9 @@ public class SongFileViewHolder extends RecyclerView.ViewHolder implements View.
                         SongTagActivity.TAGGER_EXTRA, reference);
                 return true;
 
+            case 8:
+                Util.showLyrics(context, reference);
+                return true;
         }
         return false;
     }

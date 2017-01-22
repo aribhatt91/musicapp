@@ -55,7 +55,6 @@ public class SuggestedViewHolder extends RecyclerView.ViewHolder
         View.OnClickListener, PopupMenu.OnMenuItemClickListener{
 
     // Used to cache Palette values in memory
-    private static HashMap<Song, int[]> colorCache = new HashMap<>();
     private static final int FRAME_COLOR = 0;
     private static final int TITLE_COLOR = 1;
     private static final int DETAIL_COLOR = 2;
@@ -166,14 +165,6 @@ public class SuggestedViewHolder extends RecyclerView.ViewHolder
                     PlayerController.setQueue(songList, songList.indexOf(reference));
                     PlayerController.begin();
 
-                    if (Prefs.getPrefs(itemView.getContext()).getBoolean(Prefs.SWITCH_TO_PLAYING, true)) {
-                        if (PlayerController.getQueue()!=null && !PlayerController.getQueue().isEmpty()) {
-                            Navigate.to(itemView.getContext(), NowPlayingActivity.class);
-                        } else {
-                            Toast.makeText(itemView.getContext(), "Couldn't play this song!", Toast.LENGTH_LONG).show();
-                        }
-                    }
-
 
                 }
                 break;
@@ -252,7 +243,7 @@ public class SuggestedViewHolder extends RecyclerView.ViewHolder
     }
 
     private void generatePalette(Drawable drawable) {
-        if (colorCache.get(reference) == null) {
+        if (Library.colorCache.get(reference.albumId) == null) {
             paletteTask = Palette.from(Util.drawableToBitmap(drawable)).generate(this);
         }
     }
@@ -290,7 +281,7 @@ public class SuggestedViewHolder extends RecyclerView.ViewHolder
 
     private void updatePalette(Drawable drawable) {
         try {
-            int[] colors = colorCache.get(reference);
+            int[] colors = Library.colorCache.get(reference.albumId);
 
             if (colors != null) {
                 container.setBackgroundColor(colors[FRAME_COLOR]);
@@ -318,7 +309,7 @@ public class SuggestedViewHolder extends RecyclerView.ViewHolder
     private void animatePalette(Drawable drawable) {
         try {
 
-            int[] colors = colorCache.get(reference);
+            int[] colors = Library.colorCache.get(reference.albumId);
 
             if (colors != null) {
                 backgroundAnimator = ObjectAnimator.ofObject(
@@ -384,7 +375,7 @@ public class SuggestedViewHolder extends RecyclerView.ViewHolder
             frameColor = defaultFrameColor;
         }
 
-        colorCache.put(reference, new int[]{frameColor, titleColor, detailColor});
+        Library.colorCache.put(reference.albumId, new int[]{frameColor, titleColor, detailColor});
         animatePalette(null);
     }
 

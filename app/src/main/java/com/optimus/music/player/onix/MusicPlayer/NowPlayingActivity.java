@@ -63,6 +63,7 @@ import android.widget.Toast;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 import com.bumptech.glide.Glide;
 import com.crashlytics.android.Crashlytics;
@@ -71,6 +72,7 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
 import com.optimus.music.player.onix.BuildConfig;
 import com.optimus.music.player.onix.EqualizerActivity.EqualizerActivity;
+import com.optimus.music.player.onix.JukeBoxActivity.JukeBoxDBHelper;
 import com.optimus.music.player.onix.R;
 import com.optimus.music.player.onix.Common.Library;
 import com.optimus.music.player.onix.Common.Instances.*;
@@ -383,21 +385,23 @@ public class NowPlayingActivity extends AppCompatActivity implements
             @Override
             public void onDoubleTap() {
                 if(currentReference!=null) {
-                    String lyrics = getLyrics(currentReference.location);
+                    if(Prefs.getDoubleTap(NowPlayingActivity.this)==0){
+                        Util.showLyrics(NowPlayingActivity.this, currentReference);
+                    }else if(Prefs.getDoubleTap(NowPlayingActivity.this)==1){
+                        PlayerController.togglePlay();
 
-                    AlertDialog dialog = new AlertDialog.Builder(NowPlayingActivity.this)
-                            .setTitle("Lyrics")
-                            .setMessage(lyrics)
-                            .setPositiveButton("EDIT", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    Navigate.to(NowPlayingActivity.this, LyricsActivity.class, LyricsActivity.TAGGER_EXTRA, currentReference);
-                                }
-                            })
-                            .setNegativeButton("BACK", null)
-                            .show();
-                    Themes.themeAlertDialog(dialog);
+                    }else if(Prefs.getDoubleTap(NowPlayingActivity.this)==2){
+                        try{
+                            JukeBoxDBHelper jb = new JukeBoxDBHelper(NowPlayingActivity.this);
+                            jb.insertFav(currentReference.songId,1);
+                            jb.close();
+                            Toast.makeText(NowPlayingActivity.this, "Added to favourites", Toast.LENGTH_SHORT).show();
 
+                        }catch (Exception e){
+
+                        }
+
+                    }
                 }
 
             }
@@ -525,6 +529,9 @@ public class NowPlayingActivity extends AppCompatActivity implements
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
+/*
+        newConfig.orientation = Configuration.ORIENTATION_LANDSCAPE;
+*/
         super.onConfigurationChanged(newConfig);
         if(footer!=null && slidingLayout!=null){
             if(slidingLayout.getPanelState()!=SlidingUpPanelLayout.PanelState.COLLAPSED){
@@ -707,28 +714,7 @@ public class NowPlayingActivity extends AppCompatActivity implements
 
     }
 
-    private String getLyrics(String filename){
-        String EMPTY = "No embedded lyrics found!";
-        File file = new File(filename);
-        if(file.exists()){
-            try {
-                TagOptionSingleton.getInstance().setAndroid(true);
-                AudioFile f = AudioFileIO.read(file);
-                Tag newTag = f.getTag();
-                String lyrics = newTag.getFirst(FieldKey.LYRICS);
-                if(lyrics.trim().isEmpty())
-                    return EMPTY;
-                return lyrics.trim();
-            }catch (Exception e){
-                Crashlytics.log(e.getMessage());
-                return EMPTY;
-            }catch (NoClassDefFoundError e){
-                Crashlytics.log(e.getMessage());
-                return EMPTY;
-            }
-        }
-        return EMPTY;
-    }
+
 
     @Override
     public void onBackPressed() {
@@ -835,6 +821,7 @@ public class NowPlayingActivity extends AppCompatActivity implements
     }
 
     protected void showSnackbar(String message) {
+
         View content = findViewById(R.id.list);
         if (content == null) {
             content = findViewById(android.R.id.content);
@@ -855,36 +842,48 @@ public class NowPlayingActivity extends AppCompatActivity implements
 
 
         if(PlayerController.isPlaying()){
-            fab.setImageResource(R.drawable.ic_pause_white_18dp);
-            //play.setImageResource(R.drawable.ic_pause_24dp);
-            if(!prevPlaying) {
-                fabRevealLayout.revealSecondaryView();
-                prevPlaying = true;
+            try {
+                fab.setImageResource(R.drawable.ic_pause_white_18dp);
+                //play.setImageResource(R.drawable.ic_pause_24dp);
+                if (!prevPlaying) {
+                    fabRevealLayout.revealSecondaryView();
+                    prevPlaying = true;
+                }
+            }catch (Exception e){
+                
             }
 
         }else if (!PlayerController.isPlaying() && !PlayerController.isPreparing()){
-            fab.setImageResource(R.drawable.ic_play_arrow_white_18dp);
-            //play.setImageResource(R.drawable.ic_play_arrow_24dp);
-            if(prevPlaying) {
-                prepareBackTransition(fabRevealLayout);
-                fabRevealLayout.revealMainView();
-                prevPlaying = false;
+            try {
+
+                fab.setImageResource(R.drawable.ic_play_arrow_white_18dp);
+                //play.setImageResource(R.drawable.ic_play_arrow_24dp);
+                if (prevPlaying) {
+                    prepareBackTransition(fabRevealLayout);
+                    fabRevealLayout.revealMainView();
+                    prevPlaying = false;
+                }
+            }catch (Exception e){
+
             }
         }
         if (nowPlaying != null) {
             setPlayingStyle();
-            String title = String.valueOf(PlayerController.getQueuePosition()+1)+ "  " + nowPlaying.songName;
-            songTitle.setText(nowPlaying.songName);
-            artistName.setText(nowPlaying.artistName);
-            albumTitle.setText(nowPlaying.albumName);
+            try {
+                songTitle.setText(nowPlaying.songName);
+                artistName.setText(nowPlaying.artistName);
+                albumTitle.setText(nowPlaying.albumName);
 
-            int duration = PlayerController.getDuration();
-            timeDuration.setTime(duration);
-            seekbar.setMax(duration);
+                int duration = PlayerController.getDuration();
+                timeDuration.setTime(duration);
+                seekbar.setMax(duration);
 
-            if (!observer.isRunning()) {
-                observerThread = new Thread(observer);
-                observerThread.start();
+                if (!observer.isRunning()) {
+                    observerThread = new Thread(observer);
+                    observerThread.start();
+                }
+            }catch (Exception e){
+                
             }
 
             if (currentReference==null || !currentReference.equals(nowPlaying)) {
@@ -893,6 +892,7 @@ public class NowPlayingActivity extends AppCompatActivity implements
                 // reduce the number of redundant calls by only running this if the song has
                 // changed.
                 currentReference = nowPlaying;
+                //queueFragment.onUpdate();
 
                 Bitmap art;
 
@@ -953,53 +953,70 @@ public class NowPlayingActivity extends AppCompatActivity implements
     }
 
     private void updateRepeatIcon(){
-        if (PlayerController.isRepeat()) {
-            rep.setAlpha(1.0f);
-            rep.setImageResource(R.drawable.ic_sync_white_24dp);
-            rep.setContentDescription(getResources().getString(R.string.action_enable_repeat_one));
-
-        } else {
-            if (PlayerController.isRepeatOne()) {
-                rep.setImageResource(R.drawable.ic_replay_white_24dp);
-                rep.setContentDescription(getResources().getString(R.string.action_disable_repeat));
-            } else {
+        try {
+            if (PlayerController.isRepeat()) {
+                rep.setAlpha(1.0f);
                 rep.setImageResource(R.drawable.ic_sync_white_24dp);
-                rep.setAlpha(0.5f);
-                rep.setContentDescription(getResources().getString(R.string.action_enable_repeat));
+                rep.setContentDescription(getResources().getString(R.string.action_enable_repeat_one));
+
+            } else {
+                if (PlayerController.isRepeatOne()) {
+                    rep.setImageResource(R.drawable.ic_replay_white_24dp);
+                    rep.setContentDescription(getResources().getString(R.string.action_disable_repeat));
+                } else {
+                    rep.setImageResource(R.drawable.ic_sync_white_24dp);
+                    rep.setAlpha(0.5f);
+                    rep.setContentDescription(getResources().getString(R.string.action_enable_repeat));
+                }
             }
+        }catch (Exception e){
+
         }
     }
 
     private void updateShuffleIcon(){
-        if (PlayerController.isShuffle()) {
-            shuff.setAlpha(1.0f);
-            shuff.setContentDescription(getResources().getString(R.string.action_disable_shuffle));
-        } else {
-            shuff.setAlpha(0.5f);
-            shuff.setContentDescription(getResources().getString(R.string.action_enable_shuffle));
+        try {
+            if (PlayerController.isShuffle()) {
+                shuff.setAlpha(1.0f);
+                shuff.setContentDescription(getResources().getString(R.string.action_disable_shuffle));
+            } else {
+                shuff.setAlpha(0.5f);
+                shuff.setContentDescription(getResources().getString(R.string.action_enable_shuffle));
+            }
+        }catch (Exception e){
+
         }
     }
 
     private void setNotPlayingDefaults(){
-        if(PlayerController.getNowPlaying()==null) {
-            if (draglayout.getPanelState() != SlidingUpPanelLayout.PanelState.COLLAPSED)
-                draglayout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
+        try {
+            if (PlayerController.getNowPlaying() == null) {
+                if (draglayout.getPanelState() != SlidingUpPanelLayout.PanelState.COLLAPSED)
+                    draglayout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
 
-            if (slidingLayout.getPanelState() != SlidingUpPanelLayout.PanelState.COLLAPSED)
+                if (slidingLayout.getPanelState() != SlidingUpPanelLayout.PanelState.COLLAPSED)
+                    slidingLayout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
+
+                slidingLayout.setPanelHeight(0);
                 slidingLayout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
+            }
+        }catch (Exception e){
 
-            slidingLayout.setPanelHeight(0);
-            slidingLayout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
         }
     }
 
     private void setPlayingStyle(){
-        if(PlayerController.getNowPlaying()!=null && slidingLayout.getPanelHeight()==0){
-            slidingLayout.setPanelHeight(Util.getActionBatHeight(this));
+        try {
+            if (PlayerController.getNowPlaying() != null && slidingLayout.getPanelHeight() == 0) {
+                slidingLayout.setPanelHeight(Util.getActionBatHeight(this));
+            }
+        }catch (Exception e){
+
         }
     }
 
     private void colourElements(Bitmap img){
+
         if(img!=null){
             Palette.from(img).generate(new Palette.PaletteAsyncListener() {
                 @Override
@@ -1099,23 +1116,27 @@ public class NowPlayingActivity extends AppCompatActivity implements
                 }
             });
         }else{
+            try {
 
-            fab.setBackgroundTintList(ColorStateList.valueOf(accent));
-            fab.setBackgroundTintMode(PorterDuff.Mode.MULTIPLY);
+                fab.setBackgroundTintList(ColorStateList.valueOf(accent));
+                fab.setBackgroundTintMode(PorterDuff.Mode.MULTIPLY);
 
-            frame = -1;
+                frame = -1;
 
-            if(slidingLayout.getPanelState() == SlidingUpPanelLayout.PanelState.EXPANDED){
-                colourDefaultWindows();
+                if (slidingLayout.getPanelState() == SlidingUpPanelLayout.PanelState.EXPANDED) {
+                    colourDefaultWindows();
+                }
+
+                playview.setBackgroundColor(accent);
+                bottom.setBackgroundColor(accent);
+                //songTitle.setTextColor(black);
+                header.setTextColor(black);
+                //panelButton.setColorFilter(black, PorterDuff.Mode.MULTIPLY);
+                addButton.setColorFilter(black, PorterDuff.Mode.MULTIPLY);
+                container.setBackgroundColor(black);
+            }catch (Exception e){
+
             }
-
-            playview.setBackgroundColor(accent);
-            bottom.setBackgroundColor(accent);
-            //songTitle.setTextColor(black);
-            header.setTextColor(black);
-            //panelButton.setColorFilter(black, PorterDuff.Mode.MULTIPLY);
-            addButton.setColorFilter(black, PorterDuff.Mode.MULTIPLY);
-            container.setBackgroundColor(black);
 
         }
 

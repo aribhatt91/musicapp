@@ -219,7 +219,7 @@ public class AlbumViewHolder extends RecyclerView.ViewHolder implements View.OnC
     }
 
     private void generatePalette(Drawable drawable) {
-        if (Library.colorCache.get(reference) == null) {
+        if (Library.colorCache.get(reference.albumId) == null) {
             paletteTask = Palette.from(Util.drawableToBitmap(drawable)).generate(this);
         }
     }
@@ -262,7 +262,7 @@ public class AlbumViewHolder extends RecyclerView.ViewHolder implements View.OnC
 
     private void updatePalette(Drawable drawable) {
         try {
-            int[] colors = Library.colorCache.get(reference);
+            int[] colors = Library.colorCache.get(reference.albumId);
 
             if (colors != null) {
                 container.setBackgroundColor(colors[FRAME_COLOR]);
@@ -297,7 +297,7 @@ public class AlbumViewHolder extends RecyclerView.ViewHolder implements View.OnC
         try {
 
 
-            int[] colors = Library.colorCache.get(reference);
+            int[] colors = Library.colorCache.get(reference.albumId);
 
             if (colors != null) {
                 backgroundAnimator = ObjectAnimator.ofObject(
@@ -382,7 +382,7 @@ public class AlbumViewHolder extends RecyclerView.ViewHolder implements View.OnC
             frameColor = defaultFrameColor;
         }
 
-        Library.colorCache.put(reference, new int[]{frameColor, titleColor, detailColor});
+        Library.colorCache.put(reference.albumId, new int[]{frameColor, titleColor, detailColor});
         animatePalette(null);
     }
 

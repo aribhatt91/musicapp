@@ -82,93 +82,17 @@ public class GenreViewHolder extends RecyclerView.ViewHolder implements View.OnC
     }
 
     public void update(Genre g){
-        String cnt = "No Song";
-        reference = g;
-        long genreId = reference.genreId;
-        if(isGrid) {
-            art0.setImageResource(R.drawable.transparent);
-            art1.setImageResource(R.drawable.transparent);
-            art2.setImageResource(R.drawable.transparent);
-            art3.setImageResource(R.drawable.transparent);
+        try {
+            String cnt = "No Song";
+            reference = g;
+            long genreId = reference.genreId;
+            if (isGrid) {
+                art0.setImageResource(R.drawable.transparent);
+                art1.setImageResource(R.drawable.transparent);
+                art2.setImageResource(R.drawable.transparent);
+                art3.setImageResource(R.drawable.transparent);
 
-            if (genreId > 0) {
-                Uri uri = MediaStore.Audio.Genres.Members.getContentUri("external", genreId);
-                String[] proj2 = {MediaStore.Audio.Media.DISPLAY_NAME, MediaStore.Audio.Media.ALBUM_ID};
-                String orderby = MediaStore.Audio.Media.DISPLAY_NAME;
-
-                Cursor tempcursor = context.getContentResolver().query(uri, proj2, null, null, orderby);
-
-                if (tempcursor != null) {
-                    cnt = (tempcursor.getCount() == 1 ? tempcursor.getCount() + " Song" : tempcursor.getCount() + " Songs");
-                }
-
-                Set<Long> set = new LinkedHashSet<Long>();
-
-                if (tempcursor != null && tempcursor.moveToFirst()) {
-                    if(Library.genMap.get(reference)!=null){
-                        set.addAll(Library.genMap.get(reference));
-                              }else {
-
-                        do {
-                            long id = tempcursor.getLong(tempcursor.getColumnIndexOrThrow(MediaStore.Audio.Media.ALBUM_ID));
-                            set.add(id);
-                            if (set.size() >= 3)
-                                break;
-                        } while (tempcursor.moveToNext());
-                        Library.genMap.put(reference, set);
-
-                    }
-
-                    tempcursor.close();
-
-                }
-
-
-                genreName.setText(g.genreName);
-                songNum.setText(cnt);
-
-                long id;
-
-
-                if (set.size() == 1) {
-                    Iterator<Long> it = set.iterator();
-                    id = it.next();
-                    LoadAlbumArt(context, art0, id, 1);
-
-                } else if (set.size() == 2) {
-                    Iterator<Long> it = set.iterator();
-                    id = it.next();
-                    LoadAlbumArt(context, art1, id, 2);
-
-
-                    if (it.hasNext()) {
-
-                        long id2 = it.next();
-                        LoadAlbumArt(context, art3, id2, 2);
-
-                    }
-                } else if (set.size() >= 3) {
-                    Iterator<Long> it = set.iterator();
-                    id = it.next();
-                    LoadAlbumArt(context, art1, id, 3);
-
-
-                    id = it.next();
-                    LoadAlbumArt(context, art2, id, 3);
-
-                    id = it.next();
-                    LoadAlbumArt(context, art3, id, 3);
-
-                }
-            } else {
-                art0.setImageResource(R.drawable.default_album_art_rect);
-            }
-        }else if(songNum!=null && genreName!=null && round!=null && divider!=null){
-            genreName.setText(g.genreName);
-
-            if (genreId > 0) {
-                try{
-
+                if (genreId > 0) {
                     Uri uri = MediaStore.Audio.Genres.Members.getContentUri("external", genreId);
                     String[] proj2 = {MediaStore.Audio.Media.DISPLAY_NAME, MediaStore.Audio.Media.ALBUM_ID};
                     String orderby = MediaStore.Audio.Media.DISPLAY_NAME;
@@ -178,20 +102,101 @@ public class GenreViewHolder extends RecyclerView.ViewHolder implements View.OnC
                     if (tempcursor != null) {
                         cnt = (tempcursor.getCount() == 1 ? tempcursor.getCount() + " Song" : tempcursor.getCount() + " Songs");
                     }
+
+                    Set<Long> set = new LinkedHashSet<Long>();
+
+                    if (tempcursor != null && tempcursor.moveToFirst()) {
+                        if (Library.genMap.get(reference) != null) {
+                            set.addAll(Library.genMap.get(reference));
+                        } else {
+
+                            do {
+                                long id = tempcursor.getLong(tempcursor.getColumnIndexOrThrow(MediaStore.Audio.Media.ALBUM_ID));
+                                set.add(id);
+                                if (set.size() >= 3)
+                                    break;
+                            } while (tempcursor.moveToNext());
+                            Library.genMap.put(reference, set);
+
+                        }
+
+                        tempcursor.close();
+
+                    }
+
+
+                    genreName.setText(g.genreName.trim());
                     songNum.setText(cnt);
-                    String name = g.genreName.trim();
 
-                    String i = name.substring(0, 1);
-                    int colour = gen.getColor(name);
-                    TextDrawable.IBuilder ib = TextDrawable.builder().beginConfig().toUpperCase().bold().endConfig().round();
-                    TextDrawable td = ib.build(i, colour);
-                    round.setImageDrawable(td);
-                }catch(Exception e){}
+                    long id;
 
-                divider.setAlpha(0.0f);
 
+                    if (set.size() == 1) {
+                        Iterator<Long> it = set.iterator();
+                        id = it.next();
+                        LoadAlbumArt(context, art0, id, 1);
+
+                    } else if (set.size() == 2) {
+                        Iterator<Long> it = set.iterator();
+                        id = it.next();
+                        LoadAlbumArt(context, art1, id, 2);
+
+
+                        if (it.hasNext()) {
+
+                            long id2 = it.next();
+                            LoadAlbumArt(context, art3, id2, 2);
+
+                        }
+                    } else if (set.size() >= 3) {
+                        Iterator<Long> it = set.iterator();
+                        id = it.next();
+                        LoadAlbumArt(context, art1, id, 3);
+
+
+                        id = it.next();
+                        LoadAlbumArt(context, art2, id, 3);
+
+                        id = it.next();
+                        LoadAlbumArt(context, art3, id, 3);
+
+                    }
+                } else {
+                    art0.setImageResource(R.drawable.default_album_art_rect);
+                }
+            } else if (songNum != null && genreName != null && round != null && divider != null) {
+                genreName.setText(g.genreName.trim());
+
+                if (genreId > 0) {
+                    try {
+
+                        Uri uri = MediaStore.Audio.Genres.Members.getContentUri("external", genreId);
+                        String[] proj2 = {MediaStore.Audio.Media.DISPLAY_NAME, MediaStore.Audio.Media.ALBUM_ID};
+                        String orderby = MediaStore.Audio.Media.DISPLAY_NAME;
+
+                        Cursor tempcursor = context.getContentResolver().query(uri, proj2, null, null, orderby);
+
+                        if (tempcursor != null) {
+                            cnt = (tempcursor.getCount() == 1 ? tempcursor.getCount() + " Song" : tempcursor.getCount() + " Songs");
+                        }
+                        songNum.setText(cnt);
+                        String name = g.genreName.trim();
+
+                        String i = name.substring(0, 1);
+                        int colour = gen.getColor(name);
+                        TextDrawable.IBuilder ib = TextDrawable.builder().beginConfig().toUpperCase().bold().endConfig().round();
+                        TextDrawable td = ib.build(i, colour);
+                        round.setImageDrawable(td);
+                    } catch (Exception e) {
+                    }
+
+                    divider.setAlpha(0.0f);
+
+
+                }
 
             }
+        }catch (Exception e){
 
         }
 

@@ -106,6 +106,7 @@ public class LibraryActivity extends NowPlayingActivity
     private NavAdapter adapter;
     int themeId;
     private PagerAdapter pagerAdapter;
+    public static boolean showFab;
 
     SlidingUpPanelLayout slide;
 
@@ -124,7 +125,7 @@ public class LibraryActivity extends NowPlayingActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_library);
 
-        onNewIntent(getIntent());
+        //onNewIntent(getIntent());
 
         SharedPreferences prefs = Prefs.getPrefs(this);
         primary = Integer.parseInt(prefs.getString(Prefs.PRIMARY_COLOR, "0"));
@@ -275,15 +276,12 @@ public class LibraryActivity extends NowPlayingActivity
             }
         });
 
-        displayMessage();
-
-        if(!Prefs.showFab(this))
-            fab.hide();
-        else
-            fab.show();
+        //displayMessage();
 
 
-        Library.scanAll(this);
+
+
+        //Library.scanAll(this);
 
         fab.setOnClickListener(this);
 
@@ -301,13 +299,18 @@ public class LibraryActivity extends NowPlayingActivity
                                     int position, long id) {
                 switch (position) {
 
-                    case 1://metal
+                    case 1:
                         if(PlayerController.getNowPlaying()!= null ) {
                             //Navigate.to(LibraryActivity.this, NowPlayingActivity.class);
                             if(slide.getPanelState() == SlidingUpPanelLayout.PanelState.COLLAPSED){
                                 slide.setPanelState(SlidingUpPanelLayout.PanelState.EXPANDED);
                             }else {
-                                slide.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
+                                try {
+                                    ((SlidingUpPanelLayout) findViewById(R.id.draglayout)).setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
+                                    slide.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
+                                }catch(Exception e){
+
+                                }
                             }
                         }
 
@@ -448,6 +451,8 @@ public class LibraryActivity extends NowPlayingActivity
         // Handle incoming requests to play media from other applications
         if (intent==null || intent.getData() == null) return;
 
+        intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP );
+
         // If this intent is a music intent, process it
         if (intent.getType().contains("audio") || intent.getType().contains("application/ogg")
                 || intent.getType().contains("application/x-ogg") ||
@@ -504,6 +509,7 @@ public class LibraryActivity extends NowPlayingActivity
                 }
             }
         }
+        //setIntent(null);
     }
 
 
@@ -600,11 +606,23 @@ public class LibraryActivity extends NowPlayingActivity
     @Override
     public void onResume() {
         super.onResume();
-        if(slide.getPanelState()== SlidingUpPanelLayout.PanelState.COLLAPSED){
-            colorWindowsCollapsed();
-        }
+        //onNewIntent(getIntent());
 
-        try {/*
+        try {
+            if(Library.getSongs().isEmpty()){
+                Library.scanAll(this);
+            }
+            showFab = Prefs.showFab(this);
+            if(!showFab)
+                fab.hide();
+            else
+                fab.show();
+
+            if(slide.getPanelState()== SlidingUpPanelLayout.PanelState.COLLAPSED){
+                colorWindowsCollapsed();
+            }
+
+        /*
             SharedPreferences prefs = Prefs.getPrefs(this);
             int page = Integer.parseInt(prefs.getString(Prefs.DEFAULT_PAGE, "2"));
             if (page < 5) {

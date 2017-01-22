@@ -681,11 +681,16 @@ public final class PlayerController {
 
         @Override
         public void onReceive(Context context, Intent intent) {
-            if (intent.getAction().equals(MusicPlayer.UPDATE_BROADCAST)) {
-                artwork = null;
-                updateUi();
-            } else if (intent.getAction().equals(MusicPlayer.ERROR_BROADCAST)) {
-                alertError(intent.getExtras().getString(MusicPlayer.ERROR_EXTRA_MSG));
+
+            try {
+                if (intent.getAction().equals(MusicPlayer.UPDATE_BROADCAST)) {
+                    artwork = null;
+                    updateUi();
+                } else if (intent.getAction().equals(MusicPlayer.ERROR_BROADCAST)) {
+                    alertError(intent.getExtras().getString(MusicPlayer.ERROR_EXTRA_MSG));
+                }
+            }catch (Exception e){
+
             }
         }
 

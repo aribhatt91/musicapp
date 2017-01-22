@@ -226,7 +226,7 @@ public class FoldersActivity extends NowPlayingActivity {
                 (new AsyncTask<Void,Void,Void>(){
                     @Override
                     protected Void doInBackground(Void... params) {
-                            Library.scanSongs(FoldersActivity.this);
+                            //Library.scanSongs(FoldersActivity.this);
                             folders = Library.getAllMusicFolders(FoldersActivity.this);
 
                         return null;

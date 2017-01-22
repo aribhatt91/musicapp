@@ -15,6 +15,12 @@ public class VideoLibrary {
 
 
     public static String[] urlInternational = {
+            "b8m9zhNAgKs",
+            "UqyT8IEBkvY",
+            "SXiSVQZLje8",
+            "3j8ecF8Wt4E",
+
+
             "PT2_F-1esPk",
             "34Na4j8AVgA",
             "BiQIc7fG9pA",
@@ -71,6 +77,7 @@ public class VideoLibrary {
             "g_uYn8AVqeU",
             "o0citpYDaVg",
             "oiY_iKSpWLM",
+
             "K_9tX4eHztY",
             "FMlcn-_jpWY",
             "G5Mv2iV0wkU",
@@ -87,9 +94,14 @@ public class VideoLibrary {
     };
 
     public static String[] namesInternational = {
+            "Rae Sremmurd - Black Beatles ft. Gucci Mane",
+            "Bruno Mars - 24K Magic",
+            "Ariana Grande - Side To Side ft. Nicki Minaj",
+            "Aminé - Caroline",
+
             "The Chainsmokers - Closer (Lyric) ft. Halsey ",
             "The Weeknd - Starboy ft. Daft Punk",
-            "gnash - I hate u, I love u (ft. Olivia o'Brien)",
+            "Gnash - I hate u, I love u (ft. Olivia o'Brien)",
             "Big Baby D.R.A.M. - Broccoli feat. Lil Yachty",
 
             "Daya - Sit Still, Look Pretty",
@@ -142,11 +154,13 @@ public class VideoLibrary {
             "Drake - One Dance (feat. Wizkid & Kyla)",
             "The Chainsmokers - Don't Let Me Down",
             "Kevin Gates - 2 Phones",
+
             "Future - Low Life ft. The Weeknd ",
             "Selena Gomez - Hands To Myself",
             "The Chainsmokers - Roses",
             "Nick Jonas - Close ft. Tove Lo",
             "Bryson Tiller - Don't",
+
             "Rihanna - Needed Me",
             "James Bay - Let It Go",
             "Justin Bieber - Company ",
@@ -156,6 +170,21 @@ public class VideoLibrary {
     };
 
     public static String[] bollywoodurl = {
+            "69c-vybHvko",
+            "UVuF4PB75qY",
+            "7I_1JQGrcRE",
+            "Z2g_5a8TSmQ",
+            "QQtIF3UBqAY",
+            "Wd2B8OAotU8",
+            "wzY8Bzz9FS4",
+            "TZ82ZR70vcc",
+            "T7JQHM5Leao",
+            "CCfSQHtjHk0",
+            "QNg1yg08MAY",
+            "XMSK5cCm85A",
+            "7TNNZAM68Lc",
+            "6mu07IHzGzM",
+
             "JEHHTxNBNxc",
             "7t9bT5QohRo",
             "z-diRlyLGzo",
@@ -217,45 +246,28 @@ public class VideoLibrary {
             "r5uI1XPmwyc",
             "hTBJOj1GyJ4",
             "6XNTtcvErZc",
-            "Xx4xA-2xQ8U",//11
-
-//
-
-            "Ob4wvIHUmnA",
-            "WRQHV3kDcyo",
-            "9WBb_HG_foY",
-            "N_KpjLhJa1k",
-            "d4_szl5EEww",
-            "hNubz3rGwrA",
-            "GYFDRoJtfGM",
-            "Zo4WsI14s3g",
-            "0GQX3GWcUmk",
-            "qMfvbKBvOtI",
-            "-sWXx1mbgtU",
-            "2zoIA42nJJc",
-            "SahyX6U1is0",
-            "TjnYjsHPNK8",
-
-            "DS-raAyMxl4",
-            "Iqu_W5W4YO4",
-            "uxTXp0-iZrY",
-            "GZIh0bhuFtg",
-            "BkA0lq-0f14",
-
-            "I3dxAXgIhCU",
-            "oVVq7RDy53s",
-            "51xWny9Wsdo",
-            "PdrTQmsxzpU",
-            "MUHJT5YRs1A",
-            "MRtRcTfszjY",
-            "Dp6lbdoprZ0",
-            "C5Z8WQv1Wf4",
-            "R_ha0AMNUn0",
-            "GYbPrev2aQU"
+            "Xx4xA-2xQ8U"
 
     };
 
     public static String[] bollyName = {
+            "Rahat Fateh Ali Khan - Halka Halka Ft. Ayushmann Khurrana & Amy Jackson",//3rd dec 2016
+            "Himesh Reshammiya - So much in love | Aap Se Mausiiquii",
+            "Himesh Reshammiya - Tonight | Aap Se Mausiiquii",
+            "Neha Kakkar, Sana, Sharman, Gurmeet - Mahi Ve",
+            "Neha Kakkar, Raftaar - Ki Kariye Nachna Aaonda Nahin",
+            "Arijit Singh - Nashe Si Chadh Gayi | Befikre",
+            "Benny Dayal - Ude Dil Befikre Song | Befikre",
+            "Nikhil D'Souza | Rachel Varghese - You And Me Song | Befikre",
+            "Meet Bros Sukhbir Neha Kakkar - Gal Ban Gayi",
+            "Teri Fariyaad | Tum Bin 2 - Jagjit Singh",
+            "Arijit Singh & Tulsi Kumar - Dekh lena | Tum Bin 2",
+            "Saansein - Royi",
+            "Sonu Nigam - Bas Itna Hai Kehna",
+            "Arijit Singh - Mera Ishq",
+
+
+
             "Shankar Ehsaan Loy - Hota Hai | Mirzya",
             "Shankar Ehsaan Loy - Chakora | Mirzya",
             "Pritam | Arijit - Channa Mereya | Ae Dil Hai Mushkil",
@@ -315,41 +327,7 @@ public class VideoLibrary {
             "Shashaa Tirupati, Altamash - Allah Hu Allah | Sarabjit",
             "Sonu Nigam, Jeet Gannguli - Dard | Sarabjit Concert",
             "Tulsi Kumar, Amaal Mallik - Salamat | Sarabjit",
-            "Jeet Gannguli, Rahat Fateh Ali Khan - Chahat | Blood Money",//11
-
-
-
-            "Arijit Singh, Meet Bros - Ijazat ",
-            "Armaan Malik - Sab Tera",
-            "Meet Bros, Monali Thakur - Cham Cham",
-            "Yo Yo Honey Singh - High Heels Te Nache",
-            "Shah Rukh Khan - Jabra FAN",
-            "Mithoon - Ji Huzoori",
-            "Arijit Singh - Bolna",
-            "Armaan Malik - Buddhu Sa Mann",
-            "Benny Dayal, Nucleya - Lets Nacho",
-            "Arjun Kanungo - Fursat",
-            "Kapoor & Sons - Kar Gayi Chull",
-            "Arijit Singh, Antara Mitra - Gerua",
-            "Sangeet Haldipur & Rasika Shekar - Awargi",
-            "SMohan Kannan - Nirvana",
-
-            "Arijit Singh - Sanam Re",
-            "Ariji Singh, Amit Trivedi - Yeh Fitoor Mera",
-            "Amit Trivedi - Pashmina",
-            "Kavita Seth - Jeete Hain Chal",
-            "Ankit Tiwari, Arijit Singh - Dil Cheez Tujhe Dedi",
-
-            "Aditi Singh Sharma & Arman Malik - Oye Oye",
-            "Sonu Kakkar - Phir Teri Bahon Mein ",
-            "Sonu Nigam, Jeet Ganguli - Dard",
-            "Shaarib & Toshi - Aaj Ro Len De",
-            "Arijit Singh, Tulsi Kumar, Amaal Mallik - Salamat",
-            "Arijit  Singh, Tulsi Kumar - Soch Na Sake",
-            "Amaal Mallik, Armaan Malik - Main Rahoon Ya Na Rahoon",
-            "Armaan Malik, Amaal Mallik - Bol Do Na Zara",
-            "Arijit Singh, Meet Bros - Girl I Need You",
-            "Neha Kakkar, Tony Kakkar - Do Peg Maar"
+            "Jeet Gannguli, Rahat Fateh Ali Khan - Chahat | Blood Money"
 
 
     };
@@ -390,6 +368,8 @@ public class VideoLibrary {
             "Ashmi Bose - Ajeeb Dastan Hai Yeh (Cover)",
             "Anny Ahmed | Rabindra Sangeet - Dariye Achho",
             "Megan Nicole & Alex Zaichkowski - Never Forget You | Zara Larsson & MNEK (cover)",
+
+            "Dekh Lena (Unplugged) - Tulsi Kumar",
 
 
             "Bolna (cover) - Siddharth Slathia",
@@ -447,6 +427,7 @@ public class VideoLibrary {
     };
 
     public static String[] newSenUrl = {
+
             "_-Ze6Td01h4",
             "38MmkTUfSPs",
             "0hCx37sRN74",
@@ -482,6 +463,8 @@ public class VideoLibrary {
             "FECMhUcoN_0",
             "SM7hUBaO-hA",
             "gtuhxBN09U0",
+
+            "D0K1swtcsko",
 
             "JEk5Bg3wP6Y",
             "kBlTugtEyqc",
@@ -545,8 +528,6 @@ public class VideoLibrary {
             "Big Baby D.R.A.M. - Broccoli feat. Lil Yachty",
             " Lil Wayne, Wiz Khalifa & Imagine Dragons - Sucker for Pain",
 
-            "DJ Khaled - For Free (ft. Drake)",
-            "Drake - CONTROLLA",
             "Drake - Pop Style",
             "Desiigner - Panda",
             "Future - Low Life ft. The Weeknd",
@@ -579,8 +560,6 @@ public class VideoLibrary {
             "-59jGD4WrmE",
 
 
-            "S_eIhC0vRtE",
-            "Zt2ay6eWf1U",
             "TfOQ7Dy-Qk4",
             "E5ONTXHS2mM",
             "K_9tX4eHztY",

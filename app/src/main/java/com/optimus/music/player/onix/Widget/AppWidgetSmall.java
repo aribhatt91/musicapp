@@ -132,7 +132,6 @@ public class AppWidgetSmall extends AppWidgetProvider
 
                 remoteViews.setTextViewText(R.id.notificationContentTitle, trackname);
                 remoteViews.setTextViewText(R.id.notificationContentText, albumName);
-                remoteViews.setTextViewText(R.id.notificationSubText, artistName);
 
 
                 if (PlayerController.isPlaying()) {
@@ -144,7 +143,6 @@ public class AppWidgetSmall extends AppWidgetProvider
                 remoteViews.setImageViewUri(R.id.notificationIconSmall, Uri.parse(""));
                 remoteViews.setTextViewText(R.id.notificationContentTitle, "");
                 remoteViews.setTextViewText(R.id.notificationContentText, "");
-                remoteViews.setTextViewText(R.id.notificationSubText, "");
                 remoteViews.setImageViewResource(R.id.notificationPause, R.drawable.ic_play_arrow_white_18dp);
             }
 

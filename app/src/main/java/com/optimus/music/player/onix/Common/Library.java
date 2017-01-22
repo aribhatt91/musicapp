@@ -99,7 +99,7 @@ public class Library {
     private static final Map<Long, Integer> playDates = new HashMap<>();
 
     public static final Map<Long, Uri> albumArtUriCache = new HashMap<>();
-    public static final Map<Album, int[]> colorCache = new HashMap<>();
+    public static final Map<Long, int[]> colorCache = new HashMap<>();
 
     public static final String TEST_DEVICE_ID = "31809332AF5B89D37488ACC6A70B5BB2";
     public static final long SEVEN = 604800;
@@ -3362,10 +3362,20 @@ public class Library {
             String name = getFolderName(str);
             int numSongs = Collections.frequency(dirlist, str);
             musicFolders.add(
-                    new MusicFolder(name, str, (numSongs+ " " +((numSongs>1)?"songs":"song")))
+                    new MusicFolder(name, str, (numSongs+ " " +((numSongs>1)?"songs":"song")), numSongs)
             );
         }
-        Collections.sort(musicFolders, MusicFolder.DISPLAY_NAME_COMPARATOR);
+        int sort = Prefs.getFolderSortOrder(context);
+        if(sort==0) {
+            Collections.sort(musicFolders, MusicFolder.DISPLAY_NAME_COMPARATOR);
+        }else if(sort==1){
+            Collections.sort(musicFolders, MusicFolder.COUNT_COMPARATOR_ASC);
+        }else if(sort==2){
+            Collections.sort(musicFolders, MusicFolder.COUNT_COMPARATOR_DESC);
+        }else{
+            Collections.sort(musicFolders, MusicFolder.PATH_NAME_COMPARATOR);
+
+        }
 
         return musicFolders;
     }

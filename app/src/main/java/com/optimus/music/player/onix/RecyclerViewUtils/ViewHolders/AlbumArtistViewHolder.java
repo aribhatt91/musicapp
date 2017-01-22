@@ -210,7 +210,7 @@ public class AlbumArtistViewHolder extends RecyclerView.ViewHolder implements Vi
     }
 
     private void generatePalette(Drawable drawable) {
-        if (Library.colorCache.get(reference) == null) {
+        if (Library.colorCache.get(reference.albumId) == null) {
             paletteTask = Palette.from(Util.drawableToBitmap(drawable)).generate(this);
         }
     }
@@ -248,7 +248,7 @@ public class AlbumArtistViewHolder extends RecyclerView.ViewHolder implements Vi
 
     private void updatePalette(Drawable drawable) {
         try {
-            int[] colors = Library.colorCache.get(reference);
+            int[] colors = Library.colorCache.get(reference.albumId);
 
             if (colors != null) {
                 container.setBackgroundColor(colors[FRAME_COLOR]);
@@ -274,7 +274,7 @@ public class AlbumArtistViewHolder extends RecyclerView.ViewHolder implements Vi
     }
 
     private void animatePalette(Drawable drawable) {
-        int[] colors = Library.colorCache.get(reference);
+        int[] colors = Library.colorCache.get(reference.albumId);
 
         if (colors != null) {
             backgroundAnimator = ObjectAnimator.ofObject(
@@ -337,7 +337,7 @@ public class AlbumArtistViewHolder extends RecyclerView.ViewHolder implements Vi
             frameColor = defaultFrameColor;
         }
 
-        Library.colorCache.put(reference, new int[]{frameColor, titleColor, detailColor});
+        Library.colorCache.put(reference.albumId, new int[]{frameColor, titleColor, detailColor});
         animatePalette(null);
     }
 

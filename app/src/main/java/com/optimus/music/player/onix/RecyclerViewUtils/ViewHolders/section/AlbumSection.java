@@ -61,7 +61,6 @@ public class AlbumSection extends HeterogeneousAdapter.ListSection<Album> {
             PopupMenu.OnMenuItemClickListener /*, RequestListener<String, GlideDrawable>*/ {
 
         // Used to cache Palette values in memory
-        private static HashMap<Album, int[]> colorCache = new HashMap<>();
         private static final int FRAME_COLOR = 0;
         private static final int TITLE_COLOR = 1;
         private static final int DETAIL_COLOR = 2;

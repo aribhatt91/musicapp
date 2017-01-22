@@ -11,6 +11,7 @@ import android.support.v4.view.MotionEventCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -164,7 +165,6 @@ public class QueueFragment extends Fragment implements PlayerController.UpdateLi
     @Override
     public void onUpdate() {
 
-
         if(queue==null || !queue.equals(PlayerController.getQueue())){
             queue = (ArrayList<Song>) PlayerController.getQueue();
             //adapter.setDragSection(new QueueSection(queue));
@@ -207,7 +207,7 @@ public class QueueFragment extends Fragment implements PlayerController.UpdateLi
      * called instead.
      * @param index The index of the item in the attached RecyclerView adapter to be updated
      */
-    private void updateView(int index) {
+    public void updateView(int index) {
         int start = list.getChildAdapterPosition(list.getChildAt(0));
         int end = list.getChildAdapterPosition(list.getChildAt(list.getChildCount() - 1));
 
