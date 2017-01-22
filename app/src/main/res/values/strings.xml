@@ -413,6 +413,16 @@
     <string name="tint_status_title">Tint status bar</string>
     <string name="tint_status_summary">Color the status bar according to album art</string>
 
+    <string name="ex_folder_title">Exclude folders</string>
+    <string name="ex_folder_summ">Select folders that Onix shall not scan for music files</string>
+
+    <string name="dbl_title">On double tap</string>
+    <string name="dbl_summ">Tell Onix what to do on double tapping the music player screen</string>
+
+    <string name="folder_title">Folders</string>
+
+    <string name="sort_folder_title">Sort folders</string>
+
 
     <!-- CONTENT DESCRIPTION -->
 

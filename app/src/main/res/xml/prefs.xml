@@ -1,9 +1,7 @@
 <PreferenceScreen
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    >
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <PreferenceCategory android:title="Appearance"
-        >
+    <PreferenceCategory android:title="Appearance">
 
         <ListPreference
             android:defaultValue="0"
@@ -94,6 +92,17 @@
             android:summaryOn="The shuffle button allows you to shuffle the entire library"
             android:summaryOff="The shuffle button allows you to shuffle the entire library"
             android:title="Show shuffle button"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/folder_title">
+        <ListPreference
+            android:defaultValue="0"
+            android:dialogTitle="@string/sort_folder_title"
+            android:entryValues="@array/sortvaluesFolders"
+            android:entries="@array/sortFolder"
+            android:key="sortFolder"
+            android:title="@string/sort_folder_title" />
         <MultiSelectListPreference
             android:key="excludeFolders"
             android:title="@string/ex_folder_title"
@@ -101,6 +110,7 @@
             android:entryValues="@array/empty_array"
             android:defaultValue="@array/empty_array"
             android:summary="@string/ex_folder_summ"/>
+
     </PreferenceCategory>
 
     <PreferenceCategory android:title="General">

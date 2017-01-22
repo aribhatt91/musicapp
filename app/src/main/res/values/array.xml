@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string-array name="empty_array">
+        
+    </string-array>
     <string-array name="tab_items">
         <item>Genres</item>
         <item>Playlists</item>
@@ -56,6 +59,7 @@
         <item>Blacklist</item>
         <item>Search music video</item>
         <item>Edit Tags</item>
+        <item>Show lyrics</item>
         <item>Delete from device</item>
 
     </string-array>
@@ -69,6 +73,7 @@
         <item>Add to Favourites</item>
         <item>Search music video</item>
         <item>Edit Tags</item>
+        <item>Show lyrics</item>
     </string-array>
     <string-array name="queue_options_song_fav">
         <item>Play next</item>
@@ -194,4 +199,32 @@
         <item name="1">1</item>
         <item name="2">2</item>
     </string-array>
+
+    <string-array name="dbl_tap_list">
+        <item name="0">Show lyrics</item>
+        <item name="1">Toggle play</item>
+        <item name="2">Add to favourites</item>
+    </string-array>
+
+    <string-array name="dbl_tap_vals">
+        <item name="0">0</item>
+        <item name="1">1</item>
+        <item name="2">2</item>
+    </string-array>
+
+
+    <string-array name="sortFolder">
+        <item name="0">Folder name</item>
+        <item name="1">Number of music files (asc)</item>
+        <item name="2">Number of music files (desc)</item>
+        <item name="3">Storage path</item>
+    </string-array>
+    <string-array name="sortvaluesFolders">
+        <item name="0">0</item>
+        <item name="1">1</item>
+        <item name="2">2</item>
+        <item name="3">2</item>
+
+    </string-array>
+
 </resources>

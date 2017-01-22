@@ -7,6 +7,9 @@ import android.media.audiofx.Equalizer;
 import android.net.ConnectivityManager;
 import android.preference.PreferenceManager;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Prefs {
 
     public static final String VIRTUALIZER_STRENGTH = "virstren";
@@ -28,6 +31,7 @@ public class Prefs {
 
     public static final String ALBUMSIZE = "albumSize";
     public static final String DISP_GENRE = "displayGenre";
+    public static final String SORTFOLDERS = "sortFolder";
 
 
     // Preference keys
@@ -44,6 +48,10 @@ public class Prefs {
     public static final String LAST_PAGE = "lastPage";
 
     public static final String DISP_MSG = "dispMsg";
+
+    public static final String EX_FOL = "excludeFolders";
+
+    public static final String DBL_TAP = "doubleTap";
     /**
      * Whether or not to preform first start actions. Default value is true
      */
@@ -115,6 +123,10 @@ public class Prefs {
         return (Integer.parseInt(Prefs.getPrefs(context).getString(SORTSONGS, "0")));
     }
 
+    public static int getFolderSortOrder (Context context){
+        return (Integer.parseInt(Prefs.getPrefs(context).getString(SORTFOLDERS, "0")));
+    }
+
     public static int getAlbumSortOrder (Context context){
         return (Integer.parseInt(Prefs.getPrefs(context).getString(SORTALBUMS, "0")));
     }
@@ -184,11 +196,19 @@ public class Prefs {
     }
 
     public static int getAlbumsize(Context context){
-        return Integer.parseInt(Prefs.getPrefs(context).getString(Prefs.ALBUMSIZE, "0"));
+        return Integer.parseInt(Prefs.getPrefs(context).getString(ALBUMSIZE, "0"));
     }
 
     public static int getGenreStyle(Context context){
-        return Integer.parseInt(Prefs.getPrefs(context).getString(Prefs.DISP_GENRE, "1"));
+        return Integer.parseInt(Prefs.getPrefs(context).getString(DISP_GENRE, "1"));
+    }
+
+    public static Set<String> getExcludedFolders(Context context){
+        return Prefs.getPrefs(context).getStringSet(Prefs.EX_FOL, new HashSet<String>());
+    }
+
+    public static int getDoubleTap (Context context){
+        return (Integer.parseInt(Prefs.getPrefs(context).getString(DBL_TAP, "0")));
     }
 
     public static void setSleeptimer(SharedPreferences preferences, long time){
