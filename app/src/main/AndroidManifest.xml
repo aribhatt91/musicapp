@@ -150,7 +150,8 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity-alias>
-<!--        <activity-alias
+        <!--
+            <activity-alias
             android:name=".PlayWithOnix"
             android:label="@string/app_name"
             android:targetActivity=".LibraryActivity">
@@ -166,7 +167,8 @@
                 <data android:mimeType="application/x-ogg" />
                 <data android:mimeType="application/itunes" />
             </intent-filter>
-        </activity-alias>-->
+        </activity-alias>
+        -->
 
         <activity
             android:name=".EqualizerActivity.EqualizerActivity"
@@ -257,7 +259,8 @@
         </receiver>
 
         <activity android:name=".DetailScreens.PlaylistFillActivity" />
-        <activity android:name=".JukeBoxActivity.FavouritesActivity"></activity>
+        <activity android:name=".JukeBoxActivity.FavouritesActivity" />
+        <activity android:name=".SoundCloud.SoundCloudActivity"></activity>
     </application>
 
 </manifest>

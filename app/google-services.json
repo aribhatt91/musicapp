@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "347285760125",
+    "firebase_url": "https://omix-67df7.firebaseio.com",
+    "project_id": "omix-67df7",
+    "storage_bucket": "omix-67df7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:347285760125:android:c28c3a1c51492c23",
+        "android_client_info": {
+          "package_name": "com.optimus.music.player.onix"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "347285760125-ov5sof0k9khq42evi3qe9tpmb8shjio3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYFbYxl120BoqdY_XXZ3X4XVEavOEilWQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

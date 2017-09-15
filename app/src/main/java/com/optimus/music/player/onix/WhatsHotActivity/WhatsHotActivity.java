@@ -1,13 +1,7 @@
 package com.optimus.music.player.onix.WhatsHotActivity;
 
-import android.content.Context;
-import android.content.DialogInterface;
-import android.graphics.Rect;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -15,37 +9,20 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.TypedValue;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.crashlytics.android.Crashlytics;
 import com.crashlytics.android.answers.Answers;
 import com.crashlytics.android.answers.CustomEvent;
 import com.google.android.gms.ads.*;
 import com.optimus.music.player.onix.Common.ConnectionDetector;
-import com.optimus.music.player.onix.Common.Instances.YTVideo;
 import com.optimus.music.player.onix.Common.Library;
 import com.optimus.music.player.onix.MusicPlayer.Util;
 import com.optimus.music.player.onix.R;
 import com.optimus.music.player.onix.SettingsActivity.Prefs;
 import com.optimus.music.player.onix.SettingsActivity.Themes;
-
-
-import java.util.ArrayList;
-import java.util.Locale;
 
 public class WhatsHotActivity extends AppCompatActivity {
    // RelativeLayout ad;

@@ -39,9 +39,29 @@ public class SongMultiAdapter extends RecyclerView.Adapter<SongMultiAdapter.Musi
         return songs.size();
     }
 
+    public int getSelectedCount(){
+        return selected.size();
+    }
+
     public void add(Song item) {
         songs.add(item);
         notifyItemInserted(items.size() - 1);
+    }
+
+    public void toggleSelection(int i){
+
+    }
+
+    public void restoreState(){
+
+    }
+
+    public void saveState(){
+
+    }
+
+    public void clearState(){
+
     }
 
     @Override
