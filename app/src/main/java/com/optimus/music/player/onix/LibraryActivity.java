@@ -144,7 +144,7 @@ public class LibraryActivity extends NowPlayingActivity
 
         navDrawerItems.add(new NavItem(navMenuTitles[0], R.drawable.small_icon));
         navDrawerItems.add(new NavItem(navMenuTitles[1], R.drawable.jukebox));
-        navDrawerItems.add(new NavItem(navMenuTitles[2], R.drawable.yo));
+//        navDrawerItems.add(new NavItem(navMenuTitles[2], R.drawable.yo));
         navDrawerItems.add(new NavItem(navMenuTitles[3], R.drawable.folder_shadow));
         navDrawerItems.add(new NavItem(navMenuTitles[4], R.drawable.settings_shadow));
         navDrawerItems.add(new NavItem(navMenuTitles[5], R.drawable.pencil_shadow));
@@ -337,18 +337,18 @@ public class LibraryActivity extends NowPlayingActivity
                         }
 
                         break;
+//                    case 3:
+//                        startActivity(new Intent(getApplicationContext(), WhatsHotActivity.class));
+//                        try {
+//                            mDrawerLayout.closeDrawer(GravityCompat.START);
+//                        }catch (Exception e){
+//                            e.printStackTrace();
+//
+//                        }
+//                        //mDrawerLayout.closeDrawer(Gravity.LEFT);
+//
+//                        break;
                     case 3:
-                        startActivity(new Intent(getApplicationContext(), WhatsHotActivity.class));
-                        try {
-                            mDrawerLayout.closeDrawer(GravityCompat.START);
-                        }catch (Exception e){
-                            e.printStackTrace();
-
-                        }
-                        //mDrawerLayout.closeDrawer(Gravity.LEFT);
-
-                        break;
-                    case 4:
                         try {
                             mDrawerLayout.closeDrawer(GravityCompat.START);
                         }catch (Exception e){
@@ -360,7 +360,7 @@ public class LibraryActivity extends NowPlayingActivity
                         //mDrawerLayout.closeDrawer(Gravity.LEFT);
 
                         break;
-                    case 5:
+                    case 4:
                         try {
                             mDrawerLayout.closeDrawer(GravityCompat.START);
                         }catch (Exception e){
@@ -372,7 +372,7 @@ public class LibraryActivity extends NowPlayingActivity
                         //mDrawerLayout.closeDrawer(Gravity.LEFT);
 
                         break;
-                    case 6:
+                    case 5:
                         final String pkg = getPackageName();
                         try {
                             mDrawerLayout.closeDrawer(GravityCompat.START);
@@ -391,7 +391,7 @@ public class LibraryActivity extends NowPlayingActivity
 
 
                         break;
-                    case 7:
+                    case 6:
                         try {
                             mDrawerLayout.closeDrawer(GravityCompat.START);
                         }catch (Exception e){

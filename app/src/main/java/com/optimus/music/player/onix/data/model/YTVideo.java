@@ -1,4 +1,4 @@
-package com.optimus.music.player.onix.model;
+package com.optimus.music.player.onix.data.model;
 
 /**
  * Created by apricot on 23/3/16.

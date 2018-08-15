@@ -1,4 +1,4 @@
-package com.optimus.music.player.onix.MusicPlayer;
+package com.optimus.music.player.onix.service.player;
 
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
@@ -23,16 +23,15 @@ import android.view.KeyEvent;
 import com.crashlytics.android.Crashlytics;
 import com.optimus.music.player.onix.Common.Instances.Song;
 import com.optimus.music.player.onix.Common.Library;
-import com.optimus.music.player.onix.JukeBoxActivity.JukeBoxDBHelper;
-import com.optimus.music.player.onix.R;
+import com.optimus.music.player.onix.MusicPlayer.NowPlayingActivity;
+import com.optimus.music.player.onix.MusicPlayer.PlayerService;
+import com.optimus.music.player.onix.MusicPlayer.Util;
 import com.optimus.music.player.onix.SettingsActivity.Prefs;
-
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;

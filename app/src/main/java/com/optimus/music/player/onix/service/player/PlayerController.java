@@ -1,4 +1,4 @@
-package com.optimus.music.player.onix.MusicPlayer;
+package com.optimus.music.player.onix.service.player;
 
 
 import android.content.BroadcastReceiver;
@@ -18,15 +18,15 @@ import com.crashlytics.android.Crashlytics;
 import com.crashlytics.android.answers.Answers;
 import com.crashlytics.android.answers.CustomEvent;
 import com.optimus.music.player.onix.Common.Instances.Song;
-import com.optimus.music.player.onix.SettingsActivity.Prefs;
-
 import com.optimus.music.player.onix.IPlayerService;
+import com.optimus.music.player.onix.MusicPlayer.PlayerService;
+import com.optimus.music.player.onix.MusicPlayer.Util;
+import com.optimus.music.player.onix.SettingsActivity.Prefs;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
 
 
 public final class PlayerController {
@@ -263,7 +263,7 @@ public final class PlayerController {
      * from {@link MusicPlayer#REPEAT_ALL} to {@link MusicPlayer#REPEAT_ONE}
      * from {@link MusicPlayer#REPEAT_ONE} to {@link MusicPlayer#REPEAT_NONE}
      * and from multi-repeat to {@link MusicPlayer#REPEAT_NONE}
-     * in {@link android.content.SharedPreferences} and notify the service about the
+     * in {@link SharedPreferences} and notify the service about the
      * preference change
      *
      * @see MusicPlayer#setRepeat(int)
@@ -299,7 +299,7 @@ public final class PlayerController {
     }
 
     /**
-     * Toggle shuffle on or off in {@link android.content.SharedPreferences} and notify the service
+     * Toggle shuffle on or off in {@link SharedPreferences} and notify the service
      * about the preference change
      *
      * @see MusicPlayer#setShuffle(boolean)
@@ -495,7 +495,7 @@ public final class PlayerController {
     }
 
     /**
-     * @return if shuffle is enabled in {@link android.content.SharedPreferences}
+     * @return if shuffle is enabled in {@link SharedPreferences}
      */
     public static boolean isShuffle() {
         return PreferenceManager.getDefaultSharedPreferences(applicationContext)
@@ -503,7 +503,7 @@ public final class PlayerController {
     }
 
     /**
-     * @return whether repeat all is currently enabled in {@link android.content.SharedPreferences}
+     * @return whether repeat all is currently enabled in {@link SharedPreferences}
      */
     public static boolean isRepeat() {
         return PreferenceManager.getDefaultSharedPreferences(applicationContext)
@@ -511,7 +511,7 @@ public final class PlayerController {
     }
 
     /**
-     * @return whether repeat one is currently enabled in {@link android.content.SharedPreferences}
+     * @return whether repeat one is currently enabled in {@link SharedPreferences}
      */
     public static boolean isRepeatOne() {
         return PreferenceManager.getDefaultSharedPreferences(applicationContext)

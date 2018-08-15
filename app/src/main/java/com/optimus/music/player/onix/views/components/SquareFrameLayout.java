@@ -1,4 +1,4 @@
-package com.optimus.music.player.onix.Utility;
+package com.optimus.music.player.onix.views.components;
 
 /**
  * Created by apricot on 17/10/15.
@@ -8,7 +8,7 @@ import android.util.AttributeSet;
 import android.widget.FrameLayout;
 
 /**
- * {@link android.widget.FrameLayout} which forces itself to be laid out as square.
+ * {@link FrameLayout} which forces itself to be laid out as square.
  */
 public class SquareFrameLayout extends FrameLayout {
 

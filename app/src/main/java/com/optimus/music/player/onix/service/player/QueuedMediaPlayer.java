@@ -1,4 +1,4 @@
-package com.optimus.music.player.onix.MusicPlayer;
+package com.optimus.music.player.onix.service.player;
 
 
 import android.content.Context;
@@ -7,7 +7,6 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-
 
 import com.optimus.music.player.onix.Common.Instances.Song;
 
@@ -454,7 +453,7 @@ public class QueuedMediaPlayer implements MediaPlayer.OnPreparedListener,
          *             {@link MediaPlayer#MEDIA_ERROR_SERVER_DIED}
          * @param extra An extra code received from the backing {@link MediaPlayer}
          * @return {@code true} if the error was handled, {@code false} otherwise
-         * @see android.media.MediaPlayer.OnErrorListener#onError(MediaPlayer, int, int)
+         * @see MediaPlayer.OnErrorListener#onError(MediaPlayer, int, int)
          */
         boolean onError(int what, int extra);
 
@@ -506,7 +505,7 @@ public class QueuedMediaPlayer implements MediaPlayer.OnPreparedListener,
      *
      * @param streamtype The audio stream type
      * @see MediaPlayer#setAudioStreamType(int)
-     * @see android.media.AudioManager
+     * @see AudioManager
      */
     public void setAudioStreamType(int streamtype) {
         mCurrentPlayer.setAudioStreamType(streamtype);

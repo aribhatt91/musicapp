@@ -1,12 +1,10 @@
-package com.optimus.music.player.onix.SettingsActivity;
+package com.optimus.music.player.onix.views.theme;
 
 /**
  * Created by apricot on 24/12/15.
  */
 
 import android.app.Activity;
-import android.app.ActivityManager;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -14,7 +12,6 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.StyleRes;
@@ -25,6 +22,7 @@ import android.widget.Button;
 
 import com.optimus.music.player.onix.LibraryActivity;
 import com.optimus.music.player.onix.R;
+import com.optimus.music.player.onix.SettingsActivity.Prefs;
 
 public class Themes {
 

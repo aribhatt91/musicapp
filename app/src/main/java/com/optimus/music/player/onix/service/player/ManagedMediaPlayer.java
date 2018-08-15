@@ -1,4 +1,4 @@
-package com.optimus.music.player.onix.MusicPlayer;
+package com.optimus.music.player.onix.service.player;
 
 /**
  * Created by apricot on 19/12/15.

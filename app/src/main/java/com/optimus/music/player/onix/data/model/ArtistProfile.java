@@ -1,4 +1,4 @@
-package com.optimus.music.player.onix.model;
+package com.optimus.music.player.onix.data.model;
 
 import com.optimus.music.player.onix.CrazyDataStore.Artists;
 import com.optimus.music.player.onix.CrazyDataStore.Facebook;

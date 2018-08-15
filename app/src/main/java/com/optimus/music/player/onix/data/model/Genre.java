@@ -1,4 +1,4 @@
-package com.optimus.music.player.onix.model;
+package com.optimus.music.player.onix.data.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;

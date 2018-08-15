@@ -1,4 +1,4 @@
-package com.optimus.music.player.onix.Utility;
+package com.optimus.music.player.onix.views.components;
 
 import android.annotation.TargetApi;
 import android.content.Context;

@@ -1,6 +1,5 @@
-package com.optimus.music.player.onix.SettingsActivity;
+package com.optimus.music.player.onix.views.theme;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.media.audiofx.Equalizer;
@@ -101,7 +100,7 @@ public class Prefs {
     public static final String EQ_ENABLED = "prefUseEqualizer";
     /**
      * All {@link Equalizer} settings written and parsed by
-     * {@link android.media.audiofx.Equalizer.Settings}
+     * {@link Equalizer.Settings}
      */
     public static final String EQ_SETTINGS = "prefEqualizerSettings";
 

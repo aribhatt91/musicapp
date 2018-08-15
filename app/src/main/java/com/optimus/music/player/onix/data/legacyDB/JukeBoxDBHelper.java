@@ -1,4 +1,4 @@
-package com.optimus.music.player.onix.JukeBoxActivity;
+package com.optimus.music.player.onix.data.legacyDB;
 
 import android.content.ContentValues;
 import android.content.Context;

@@ -1,4 +1,4 @@
-package com.optimus.music.player.onix.Common.lastFM;
+package com.optimus.music.player.onix.data.model.lfm;
 /**
  * Created by apricot on 9/11/15.
  */
