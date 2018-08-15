@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.optimus.music.player.onix"
     android:installLocation="auto"
     android:versionCode="29"
@@ -134,10 +135,6 @@
             android:label="@string/title_activity_search"
             android:theme="@style/AppThemeBase"
             android:windowSoftInputMode="adjustPan|adjustNothing" />
-        <activity
-            android:name=".FoldersActivity.FoldersActivity"
-            android:label="@string/title_activity_folders"
-            android:theme="@style/AppThemeBase" />
 
         <activity-alias
             android:name=".SearchWithOnix"
@@ -150,7 +147,13 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity-alias>
-<!--        <activity-alias
+
+        <activity
+            android:name=".FoldersActivity.FoldersActivity"
+            android:label="@string/title_activity_folders"
+            android:theme="@style/AppThemeBase" />
+        <!--
+            <activity-alias
             android:name=".PlayWithOnix"
             android:label="@string/app_name"
             android:targetActivity=".LibraryActivity">
@@ -166,7 +169,8 @@
                 <data android:mimeType="application/x-ogg" />
                 <data android:mimeType="application/itunes" />
             </intent-filter>
-        </activity-alias>-->
+        </activity-alias>
+        -->
 
         <activity
             android:name=".EqualizerActivity.EqualizerActivity"
@@ -257,7 +261,41 @@
         </receiver>
 
         <activity android:name=".DetailScreens.PlaylistFillActivity" />
-        <activity android:name=".JukeBoxActivity.FavouritesActivity"></activity>
+        <activity android:name=".JukeBoxActivity.FavouritesActivity" />
+        <activity android:name=".SoundCloud.SoundCloudActivity" />
+
+        <service
+            android:name=".service.PlayerService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity android:name=".views.activities.AlbumActivity" />
+        <activity android:name=".views.activities.ArtistActivity" />
+
+        <receiver android:name=".views.widgets.MaterialWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/material_widget_info" />
+        </receiver>
+
+        <activity android:name=".views.widgets.MaterialWidgetConfigureActivity">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".views.activities.JukeboxActivity" />
+        <activity android:name=".views.activities.SettingsActivity" />
+        <activity android:name=".views.activities.SearchActivity" />
+        <activity android:name=".views.activities.AlbumTagActivity" />
+        <activity android:name=".views.activities.SongTagActivity" />
+        <activity android:name=".views.activities.PlaylistActivity" />
+        <activity android:name=".views.activities.SplashActivity" />
+        <activity android:name=".views.activities.EqualizerActivity" />
+        <activity android:name=".views.activities.AboutActivity"></activity>
     </application>
 
 </manifest>
